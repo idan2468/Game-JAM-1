@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor;
 using UnityEngine;
 
-public class Path : MonoBehaviour
+public class PathManager : MonoBehaviour
 {
     public Transform[] points;
-    // Start is called before the first frame update
-    void Start()
+
+    public Vector3 GetPosition(int i)
     {
-        
+        return points[i].position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnDrawGizmosSelected()
+    [DrawGizmo(GizmoType.InSelectionHierarchy | GizmoType.NotInSelectionHierarchy | GizmoType.Pickable)]
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         for (int i = 0; i < points.Length - 1; i++)
