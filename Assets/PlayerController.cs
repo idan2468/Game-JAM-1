@@ -7,16 +7,15 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public PathMovement pathMovement;
 
+    private bool isJumping;
     private Animator animator;
     private int jumpAnimationCode;
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         jumpAnimationCode = Animator.StringToHash("Jump");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.UpArrow))
@@ -31,7 +30,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            animator.SetTrigger(jumpAnimationCode);
+            if (!isJumping)
+            {
+                animator.SetTrigger(jumpAnimationCode);
+                isJumping = true;
+            }
+
         }
     }
 }
