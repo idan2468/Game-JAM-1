@@ -6,45 +6,28 @@ public class PathMovement : MonoBehaviour
 {
     public BezierSpline path;
     public float speed = 3f;
-    // [Range(0f, 1f)] public float startingPoint;
+    public float rotationSpeed = 100f;
+    [Range(0f, 1f)] public float startingPoint;
     private float t;
     void Start()
     {
-        // t = startingPoint;
-        // transform.position = path.GetPoint(t);
-        Debug.Log(333333);
+        t = startingPoint;
+        transform.position = path.GetPoint(t);
     }
-
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            MoveForward();
-        }
-    
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            MoveBackwards();
-        }
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            GetComponentInChildren<Animator>().SetTrigger("Jump");
-        }
-    }
-    
 
     public void MoveForward()
     {
         if (t >= 1 - Mathf.Epsilon) return;
-        transform.LookAt(path.GetTangent(t));
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(path.GetTangent(t)), Time.deltaTime * rotationSpeed);
+        // transform.rotation = Quaternion.LookRotation(path.GetTangent(t));
         transform.position = path.MoveAlongSpline(ref t, speed * Time.deltaTime);
     }
 
     public void MoveBackwards()
     {
-        if (t >= Mathf.Epsilon) return;
-        transform.LookAt(-path.GetTangent(t));
+        if (t <= Mathf.Epsilon) return;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(-path.GetTangent(t)), Time.deltaTime * rotationSpeed);
+        // transform.rotation = Quaternion.LookRotation(-path.GetTangent(t));
         transform.position = path.MoveAlongSpline(ref t, - speed * Time.deltaTime);
     }
     
