@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponentInChildren<Animator>;
+        animator = GetComponent<Animator>();
         jumpAnimationCode = Animator.StringToHash("Jump");
     }
 
