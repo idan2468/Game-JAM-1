@@ -1,18 +1,18 @@
 ﻿using System;
+using BezierSolution;
 using UnityEngine;
 
 public class PathMovement : MonoBehaviour
 {
-    public PathManager path;
+    public BezierSpline path;
     public float speed = 3f;
-    public int startingIndex;
-    private int currentIndex = 0;
-    private Rigidbody rb;
+    // [Range(0f, 1f)] public float startingPoint;
+    private float t;
     void Start()
     {
-        transform.position = startingIndex == -1 ? path.GetPosition(path.points.Length-1) : path.GetPosition(startingIndex);
-        transform.LookAt(path.points[1]);
-        rb = GetComponent<Rigidbody>();
+        // t = startingPoint;
+        // transform.position = path.GetPoint(t);
+        Debug.Log(333333);
     }
 
     void Update()
@@ -32,7 +32,23 @@ public class PathMovement : MonoBehaviour
             GetComponentInChildren<Animator>().SetTrigger("Jump");
         }
     }
+    
 
+    public void MoveForward()
+    {
+        if (t >= 1 - Mathf.Epsilon) return;
+        transform.LookAt(path.GetTangent(t));
+        transform.position = path.MoveAlongSpline(ref t, speed * Time.deltaTime);
+    }
+
+    public void MoveBackwards()
+    {
+        if (t >= Mathf.Epsilon) return;
+        transform.LookAt(-path.GetTangent(t));
+        transform.position = path.MoveAlongSpline(ref t, - speed * Time.deltaTime);
+    }
+    
+    #region Physics Section (should be activated if we decide to do in physics)
     // private void FixedUpdate()
     // {
     //     if (Input.GetKey(KeyCode.UpArrow))
@@ -45,54 +61,28 @@ public class PathMovement : MonoBehaviour
     //         MoveBackwardsP();
     //     }
     // }
-
-    public void MoveForward()
-    {
-        if (Vector3.Distance(transform.position, path.GetPosition(currentIndex+1)) < Mathf.Epsilon)
-        {
-            if (currentIndex+1 >= path.points.Length-1) return;
-            currentIndex++;
-        }
-        transform.position = Vector3.MoveTowards(transform.position, path.GetPosition(currentIndex+1), Time.deltaTime * speed);
-        transform.LookAt(path.GetPosition(currentIndex+1));
-    }
-
-    public void MoveBackwards()
-    {
-        if (Vector3.Distance(transform.position, path.GetPosition(currentIndex)) < Mathf.Epsilon)
-        {
-            if (currentIndex == 0) return;
-            currentIndex--;
-        }
-        transform.position = Vector3.MoveTowards(transform.position, path.GetPosition(currentIndex), Time.deltaTime * speed);
-        transform.LookAt(path.GetPosition(currentIndex));
-    }
     
-    public void MoveForwardP()
-    {
-        if (Vector3.Distance(transform.position, path.GetPosition(currentIndex+1)) < 2)
-        {
-            if (currentIndex+1 >= path.points.Length-1) return;
-            currentIndex++;
-        }
-
-        transform.LookAt(path.GetPosition(currentIndex+1));
-        rb.AddRelativeForce(speed * Vector3.forward);
-    }
-
-    public void MoveBackwardsP()
-    {
-        if (Vector3.Distance(transform.position, path.GetPosition(currentIndex)) < 2)
-        {
-            if (currentIndex == 0) return;
-            currentIndex--;
-        }
-        transform.LookAt(path.GetPosition(currentIndex));
-        rb.AddRelativeForce(speed * Vector3.forward);
-    }
-
-    public void JumpP()
-    {
-        
-    }
+    // public void MoveForwardP()
+    // {
+    //     if (Vector3.Distance(transform.position, path.GetPosition(currentIndex+1)) < 2)
+    //     {
+    //         if (currentIndex+1 >= path.points.Length-1) return;
+    //         currentIndex++;
+    //     }
+    //
+    //     transform.LookAt(path.GetPosition(currentIndex+1));
+    //     rb.AddRelativeForce(speed * Vector3.forward);
+    // }
+    //
+    // public void MoveBackwardsP()
+    // {
+    //     if (Vector3.Distance(transform.position, path.GetPosition(currentIndex)) < 2)
+    //     {
+    //         if (currentIndex == 0) return;
+    //         currentIndex--;
+    //     }
+    //     transform.LookAt(path.GetPosition(currentIndex));
+    //     rb.AddRelativeForce(speed * Vector3.forward);
+    // }
+    #endregion
 }
