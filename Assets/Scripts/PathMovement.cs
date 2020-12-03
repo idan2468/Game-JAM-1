@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PathMovement : MonoBehaviour
 {
+    
     public BezierSpline path;
     public float speed = 3f;
     public float rotationSpeed = 100f;
@@ -29,6 +30,12 @@ public class PathMovement : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(-path.GetTangent(t)), Time.deltaTime * rotationSpeed);
         // transform.rotation = Quaternion.LookRotation(-path.GetTangent(t));
         transform.position = path.MoveAlongSpline(ref t, - speed * Time.deltaTime);
+    }
+
+    public void TeleportBack(float distance)
+    {
+        t = Mathf.Clamp01(t - distance);
+        transform.position = path.GetPoint(t);
     }
     
     #region Physics Section (should be activated if we decide to do in physics)

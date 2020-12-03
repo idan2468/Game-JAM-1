@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -7,44 +8,46 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float jumpDuration;
     public GameObject body;
+    public float damageResistance = 0;
+    
     private PathMovement pathMovement;
     private bool isJumping;
-    // private Animator animator;
-    // private int jumpAnimationCode;
     void Start()
     {
         pathMovement = GetComponent<PathMovement>();
-        // animator = GetComponentInChildren<Animator>();
-        // jumpAnimationCode = Animator.StringToHash("Jump");
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             pathMovement.MoveForward();
         }
     
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             pathMovement.MoveBackwards();
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             Jump();
-            // if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            // {
-            //     isJumping = false;
-            // }
-            // Debug.Log(isJumping);
-            // if (!isJumping)
-            // {
-            //     animator.SetTrigger(jumpAnimationCode);
-            //     isJumping = true;
-            // }
-
         }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            Fire();
+        }
+    }
+
+    private void Fire()
+    {
+        
+    }
+
+    public void Respawn(float distance)
+    {
+        pathMovement.TeleportBack(distance);
     }
 
     public void Jump()
@@ -53,6 +56,14 @@ public class PlayerController : MonoBehaviour
         isJumping = true;
         LeanTween.moveLocal(body, jumpForce * Vector3.up, jumpDuration).setLoopPingPong(1)
             .setEaseOutQuad().setOnComplete(() => {isJumping = false;});
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        IDamageMaker obs = other.GetComponent<IDamageMaker>();
+        if (obs == null) return;
 
+        float impact = obs.MakeDamage(transform);
+        Respawn(impact * (1 - damageResistance / 100f));
     }
 }
