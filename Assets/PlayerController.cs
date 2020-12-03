@@ -5,15 +5,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float jumpForce;
-    public PathMovement pathMovement;
-
+    public float jumpDuration;
+    public GameObject body;
+    private PathMovement pathMovement;
     private bool isJumping;
-    private Animator animator;
-    private int jumpAnimationCode;
+    // private Animator animator;
+    // private int jumpAnimationCode;
     void Start()
     {
-        animator = GetComponent<Animator>();
-        jumpAnimationCode = Animator.StringToHash("Jump");
+        pathMovement = GetComponent<PathMovement>();
+        // animator = GetComponentInChildren<Animator>();
+        // jumpAnimationCode = Animator.StringToHash("Jump");
     }
 
     void Update()
@@ -30,12 +32,17 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            if (!isJumping)
-            {
-                animator.SetTrigger(jumpAnimationCode);
-                isJumping = true;
-            }
+            Jump();
 
         }
+    }
+
+    public void Jump()
+    {
+        if (isJumping) return;
+        isJumping = true;
+        LeanTween.moveLocal(body, jumpForce * Vector3.up, jumpDuration).setLoopPingPong(1)
+            .setEaseOutQuad().setOnComplete(() => {isJumping = false;});
+
     }
 }

@@ -12,7 +12,7 @@ public class PathMovement : MonoBehaviour
     void Start()
     {
         t = startingPoint;
-        transform.position = path.GetPoint(t);
+        transform.position = path.GetPoint(t); 
     }
 
     public void MoveForward()
