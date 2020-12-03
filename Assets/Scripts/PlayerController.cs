@@ -1,15 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Net;
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(PathMovement))]
 public class PlayerController : MonoBehaviour
 {
     public float jumpForce;
     public float jumpDuration;
     public GameObject body;
     public float damageResistance = 0;
-    
+    public Rocket rocket;
     private PathMovement pathMovement;
     private bool isJumping;
     void Start()
@@ -34,7 +32,7 @@ public class PlayerController : MonoBehaviour
             Jump();
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Fire();
         }
@@ -42,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void Fire()
     {
-        
+        rocket.Launch();
     }
 
     public void Respawn(float distance)
@@ -57,13 +55,9 @@ public class PlayerController : MonoBehaviour
         LeanTween.moveLocal(body, jumpForce * Vector3.up, jumpDuration).setLoopPingPong(1)
             .setEaseOutQuad().setOnComplete(() => {isJumping = false;});
     }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        IDamageMaker obs = other.GetComponent<IDamageMaker>();
-        if (obs == null) return;
 
-        float impact = obs.MakeDamage(transform);
-        Respawn(impact * (1 - damageResistance / 100f));
+    public void GetHit(float power)
+    {
+        Respawn(power * (1 - damageResistance / 100f));
     }
 }
