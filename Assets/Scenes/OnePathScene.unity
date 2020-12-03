@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.2850269, g: 0.37139335, b: 0.49601042, a: 1}
+  m_IndirectSpecularColor: {r: 0.28502685, g: 0.37139308, b: 0.4960099, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -973,6 +973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f058c04df228d4080a60b9f970dff2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: {fileID: 1193041321}
   speed: 15
   rotationSpeed: 100
   startingPoint: 0.135
@@ -988,8 +989,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f79da75129c406eb09dbbfd0fbd145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 0
-  pathMovement: {fileID: 827253942}
+  jumpForce: 1.6
+  jumpDuration: 0.25
+  body: {fileID: 1040700832}
 --- !u!95 &827253944
 Animator:
   serializedVersion: 3
@@ -998,13 +1000,12 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827253940}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8da94460aea5d4cb7915f2a23c331401, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 1
   m_ApplyRootMotion: 1
-1f4dbc13ec79b8669091097f4f6bc140a24
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1588,7 +1589,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040700832}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8da94460aea5d4cb7915f2a23c331401, type: 2}
   m_CullingMode: 0
@@ -1845,6 +1846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f058c04df228d4080a60b9f970dff2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: {fileID: 0}
   speed: 15
   rotationSpeed: 10
   startingPoint: 0
