@@ -7,8 +7,9 @@ public class SnowBall : MonoBehaviour
     public float rollingSpeed = 2f;
     public GameObject ball;
     private PathMovement path;
+    [HideInInspector] public SnowballSpawner spawner;
 
-    private void Start()
+    private void Awake()
     {
         path = GetComponent<PathMovement>();
     }
@@ -23,6 +24,7 @@ public class SnowBall : MonoBehaviour
     public void Despawn()
     {
         gameObject.SetActive(false);
+        spawner.AfterSnowballDie(this);
     }
 
     public void Respawn()
@@ -31,7 +33,7 @@ public class SnowBall : MonoBehaviour
         path.SetPosition(1);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         IDamageable hit = other.gameObject.GetComponent<IDamageable>();
         if (hit != null)

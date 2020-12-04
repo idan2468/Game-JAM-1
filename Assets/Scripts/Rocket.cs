@@ -1,34 +1,34 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Rocket : MonoBehaviour
 {
-    public Transform target;
-    public Transform respawnPoint;
     public float launchForce = 100f;
     public float speed = 3f;
     public float rotationSpeed = 1;
     public ParticleSystem explosionParticles;
 
+    public float lifeSpan = 10f;
     public float explosionRadius = 4;
     public float explosionPower = 10;
     public AnimationCurve explosionImpactCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
+    private Transform target;
+    [HideInInspector] public RocketLauncher launcher;
     private Rigidbody rb;
-    public void Launch()
-    {
-        rb.velocity = Vector3.zero;
-        transform.position = respawnPoint.position;
-        transform.rotation = respawnPoint.rotation;
-
-        gameObject.SetActive(true);
-        rb.AddForce(launchForce * Vector3.forward);
-    }
+    private float timer;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+        if (timer <= 0) Explode();
     }
 
     void FixedUpdate()
@@ -38,6 +38,18 @@ public class Rocket : MonoBehaviour
             Quaternion.AngleAxis(Mathf.Acos(Vector3.Dot(Vector3.forward, direction)) * Mathf.Rad2Deg, Vector3.Cross(Vector3.forward, direction)),
             Time.fixedDeltaTime * rotationSpeed);
         rb.velocity = Mathf.Lerp(rb.velocity.magnitude, speed, Time.fixedDeltaTime) * transform.forward;
+    }
+
+    public void Launch(Transform spawnPoint, Transform _target)
+    {
+        target = _target;
+        timer = lifeSpan;
+        rb.velocity = Vector3.zero;
+        transform.position = spawnPoint.position;
+        transform.rotation = spawnPoint.rotation;
+
+        gameObject.SetActive(true);
+        rb.AddForce(launchForce * Vector3.forward);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -60,6 +72,7 @@ public class Rocket : MonoBehaviour
 
         Instantiate(explosionParticles, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
+        launcher.AfterRocketDie(this);
     }
 
     private void OnDrawGizmosSelected()

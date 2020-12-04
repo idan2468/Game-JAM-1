@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(PathMovement))]
+[RequireComponent(typeof(PathMovement), typeof(RocketLauncher))]
 public class PlayerController : MonoBehaviour
 {
     public float jumpForce;
     public float jumpDuration;
     public GameObject body;
     public float damageResistance = 0;
-    public Rocket rocket;
+    
+    
+    private RocketLauncher rocketLauncher;
     private PathMovement pathMovement;
     private bool isJumping;
     void Start()
     {
         pathMovement = GetComponent<PathMovement>();
+        rocketLauncher = GetComponent<RocketLauncher>();
     }
 
     void Update()
@@ -40,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void Fire()
     {
-        rocket.Launch();
+        rocketLauncher.Launch();
     }
 
     public void Respawn(float distance)
