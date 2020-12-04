@@ -1,69 +1,69 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace BezierSolution.Extras
 {
-	[CustomEditor( typeof( BezierSpline ) )]
-	[CanEditMultipleObjects]
-	public class BezierSplineEditor : Editor
-	{
-		private BezierSpline[] allSplines;
+    [CustomEditor(typeof(BezierSpline))]
+    [CanEditMultipleObjects]
+    public class BezierSplineEditor : Editor
+    {
+        private BezierSpline[] allSplines;
 
-		private void OnEnable()
-		{
-			Object[] splines = targets;
-			allSplines = new BezierSpline[splines.Length];
-			for( int i = 0; i < splines.Length; i++ )
-			{
-				BezierSpline spline = (BezierSpline) splines[i];
-				if( spline )
-					spline.Refresh();
+        private void OnEnable()
+        {
+            Object[] splines = targets;
+            allSplines = new BezierSpline[splines.Length];
+            for (int i = 0; i < splines.Length; i++)
+            {
+                BezierSpline spline = (BezierSpline)splines[i];
+                if (spline)
+                    spline.Refresh();
 
-				allSplines[i] = spline;
-			}
+                allSplines[i] = spline;
+            }
 
-			Undo.undoRedoPerformed -= OnUndoRedo;
-			Undo.undoRedoPerformed += OnUndoRedo;
-		}
+            Undo.undoRedoPerformed -= OnUndoRedo;
+            Undo.undoRedoPerformed += OnUndoRedo;
+        }
 
-		private void OnDisable()
-		{
-			Undo.undoRedoPerformed -= OnUndoRedo;
-		}
+        private void OnDisable()
+        {
+            Undo.undoRedoPerformed -= OnUndoRedo;
+        }
 
-		private void OnSceneGUI()
-		{
-			BezierSpline spline = (BezierSpline) target;
-			BezierUtils.DrawSplineDetailed( spline );
+        private void OnSceneGUI()
+        {
+            BezierSpline spline = (BezierSpline)target;
+            BezierUtils.DrawSplineDetailed(spline);
 
-			for( int i = 0; i < spline.Count; i++ )
-				BezierUtils.DrawBezierPoint( spline[i], i + 1, false );
-		}
+            for (int i = 0; i < spline.Count; i++)
+                BezierUtils.DrawBezierPoint(spline[i], i + 1, false);
+        }
 
-		public override void OnInspectorGUI()
-		{
-			BezierUtils.DrawSplineInspectorGUI( allSplines );
-		}
+        public override void OnInspectorGUI()
+        {
+            BezierUtils.DrawSplineInspectorGUI(allSplines);
+        }
 
-		private void OnUndoRedo()
-		{
-			for( int i = 0; i < allSplines.Length; i++ )
-			{
-				if( allSplines[i] )
-					allSplines[i].Refresh();
-			}
+        private void OnUndoRedo()
+        {
+            for (int i = 0; i < allSplines.Length; i++)
+            {
+                if (allSplines[i])
+                    allSplines[i].Refresh();
+            }
 
-			Repaint();
-		}
+            Repaint();
+        }
 
-		private bool HasFrameBounds()
-		{
-			return !serializedObject.isEditingMultipleObjects;
-		}
+        private bool HasFrameBounds()
+        {
+            return !serializedObject.isEditingMultipleObjects;
+        }
 
-		private Bounds OnGetFrameBounds()
-		{
-			return new Bounds( ( (BezierSpline) target ).transform.position, new Vector3( 1f, 1f, 1f ) );
-		}
-	}
+        private Bounds OnGetFrameBounds()
+        {
+            return new Bounds(((BezierSpline)target).transform.position, new Vector3(1f, 1f, 1f));
+        }
+    }
 }

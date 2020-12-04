@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
         {
             pathMovement.MoveForward();
         }
-    
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             pathMovement.MoveBackwards();
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         if (isJumping) return;
         isJumping = true;
         LeanTween.moveLocal(body, jumpForce * Vector3.up, jumpDuration).setLoopPingPong(1)
-            .setEaseOutQuad().setOnComplete(() => {isJumping = false;});
+            .setEaseOutQuad().setOnComplete(() => { isJumping = false; });
     }
 
     public void GetHit(float power)

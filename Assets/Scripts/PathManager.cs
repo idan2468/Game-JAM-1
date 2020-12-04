@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 public class PathManager : MonoBehaviour
@@ -30,7 +29,7 @@ public class PathManager : MonoBehaviour
         Gizmos.color = Color.red;
         for (int i = 1; i < points.Length - 1; i++)
         {
-            Gizmos.DrawLine(points[i].position, points[i+1].position);
+            Gizmos.DrawLine(points[i].position, points[i + 1].position);
             Gizmos.DrawIcon(points[i].position, "blendKey");
         }
     }

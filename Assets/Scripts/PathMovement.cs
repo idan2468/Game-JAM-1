@@ -1,10 +1,9 @@
-﻿using System;
-using BezierSolution;
+﻿using BezierSolution;
 using UnityEngine;
 
 public class PathMovement : MonoBehaviour
 {
-    
+
     public BezierSpline path;
     public float speed = 3f;
     public float rotationSpeed = 100f;
@@ -16,7 +15,7 @@ public class PathMovement : MonoBehaviour
     void Start()
     {
         t = startingPoint;
-        transform.position = path.GetPoint(t); 
+        transform.position = path.GetPoint(t);
     }
 
     public void MoveForward()
@@ -30,7 +29,7 @@ public class PathMovement : MonoBehaviour
     {
         if (t <= Mathf.Epsilon) return;
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(-path.GetTangent(t)), Time.deltaTime * rotationSpeed);
-        transform.position = path.MoveAlongSpline(ref t, - speed * Time.deltaTime);
+        transform.position = path.MoveAlongSpline(ref t, -speed * Time.deltaTime);
     }
 
     public void SetPosition(float _t)
