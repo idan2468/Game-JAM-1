@@ -12,7 +12,7 @@ public class UIController : MonoBehaviour
     [SerializeField] Image[] playerTwoLife;
     private float loosenHeartsPlayer1 = 0;
     private float loosenHeartsPlayer2 = 0;
-    
+
     private void Awake()
     {
         if (instance == null)
@@ -34,16 +34,24 @@ public class UIController : MonoBehaviour
 
     public IEnumerator sample()
     {
-        yield return UpdateDamageGUI(PlayerIndex.Player1, 2.5f);
+        yield return UpdateDamageGUI(PlayerIndex.Player1, 2.5f, 0);
         Debug.Log("LoosenHearts " + loosenHeartsPlayer1.ToString());
-        yield return UpdateDamageGUI(PlayerIndex.Player2, 1f);
+        yield return UpdateDamageGUI(PlayerIndex.Player2, 1f, 0);
         Debug.Log("LoosenHearts " + loosenHeartsPlayer2.ToString());
-        yield return UpdateHealGUI(PlayerIndex.Player1, 2.5f);
+        yield return UpdateHealGUI(PlayerIndex.Player1, 2.5f, 0);
         Debug.Log("LoosenHearts " + loosenHeartsPlayer1.ToString());
-        yield return UpdateHealGUI(PlayerIndex.Player2, 1f);
+        yield return UpdateHealGUI(PlayerIndex.Player2, 1f, 0);
         Debug.Log("LoosenHearts " + loosenHeartsPlayer2.ToString());
     }
-    public IEnumerator UpdateDamageGUI(PlayerIndex playerIndex, float damage)
+    public void UpdateDamageGUI(PlayerIndex playerIndex, float damage)
+    {
+        StartCoroutine(UpdateDamageGUI(playerIndex, damage, 0));
+    }
+    public void UpdateHealGUI(PlayerIndex playerIndex, float heal)
+    {
+        StartCoroutine(UpdateHealGUI(playerIndex, heal, 0));
+    }
+    private IEnumerator UpdateDamageGUI(PlayerIndex playerIndex, float damage, int dum = 0)
     {
         var loosenHearts = playerIndex == PlayerIndex.Player1 ? loosenHeartsPlayer1 : loosenHeartsPlayer2;
         if (damage < 0 || loosenHearts + damage > TOTAL_NUN_HEARTS)
@@ -74,10 +82,10 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public IEnumerator UpdateHealGUI(PlayerIndex playerIndex, float heal)
+    private IEnumerator UpdateHealGUI(PlayerIndex playerIndex, float heal, int dum = 0)
     {
         var loosenHearts = playerIndex == PlayerIndex.Player1 ? loosenHeartsPlayer1 : loosenHeartsPlayer2;
-        if(heal < 0 || loosenHearts - heal < 0)
+        if (heal < 0 || loosenHearts - heal < 0)
         {
             yield break;
         }
