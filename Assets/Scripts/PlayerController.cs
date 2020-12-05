@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
 
+public enum PlayerIndex
+{
+    Player1 = 1, 
+    Player2 = 2
+}
+
 [RequireComponent(typeof(PathMovement), typeof(RocketLauncher))]
 public class PlayerController : MonoBehaviour
 {
@@ -7,11 +13,13 @@ public class PlayerController : MonoBehaviour
     public float jumpDuration;
     public GameObject body;
     public float damageResistance = 0;
-
+    public PlayerIndex playerIndex;
 
     private RocketLauncher rocketLauncher;
     private PathMovement pathMovement;
     private bool isJumping;
+
+    
     void Start()
     {
         pathMovement = GetComponent<PathMovement>();
@@ -20,22 +28,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        float horizontalMovement = Input.GetAxis("Horizontal_"+playerIndex);
+        if (horizontalMovement > Mathf.Epsilon)
         {
             pathMovement.MoveForward();
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (horizontalMovement < -Mathf.Epsilon)
         {
             pathMovement.MoveBackwards();
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetAxis("Jump_"+playerIndex) > Mathf.Epsilon)
         {
             Jump();
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetButtonDown("Fire_"+playerIndex))
         {
             Fire();
         }
@@ -62,5 +71,6 @@ public class PlayerController : MonoBehaviour
     public void GetHit(float power)
     {
         Respawn(power * (1 - damageResistance / 100f));
+        UIController.getInstance().UpdateDamageGUI(playerIndex, power);
     }
 }

@@ -12,13 +12,7 @@ public class UIController : MonoBehaviour
     [SerializeField] Image[] playerTwoLife;
     private float loosenHeartsPlayer1 = 0;
     private float loosenHeartsPlayer2 = 0;
-    // Start is called before the first frame update
-
-    public enum PlayerIndex
-    {
-        Player1 = 1,
-        Player2 = 2
-    }
+    
     private void Awake()
     {
         if (instance == null)
@@ -38,10 +32,6 @@ public class UIController : MonoBehaviour
         return instance;
     }
 
-    void Start()
-    {
-        StartCoroutine(sample());
-    }
     public IEnumerator sample()
     {
         yield return UpdateDamageGUI(PlayerIndex.Player1, 2.5f);
@@ -124,11 +114,5 @@ public class UIController : MonoBehaviour
             heartImages[heartIndex].fillAmount = val;
 
         }).setEaseOutQuad();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

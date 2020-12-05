@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 279462688381227997}
   - component: {fileID: 279462688381227996}
   - component: {fileID: 457374270}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,6 +184,7 @@ MonoBehaviour:
   jumpDuration: 0.25
   body: {fileID: 279462688226632394}
   damageResistance: 0
+  playerIndex: 1
 --- !u!114 &279462688381227996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7153927158865908981}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RocketSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +432,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7760464623932320726, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7761672489044257505, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: m_RootOrder
@@ -483,7 +484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7761672489044257506, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7761672489044257507, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: target
@@ -583,7 +584,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7760464623932320726, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7761672489044257505, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: m_RootOrder
@@ -635,7 +636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7761672489044257506, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7761672489044257507, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: target
@@ -665,7 +666,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7760464623932320726, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7761672489044257505, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: m_RootOrder
@@ -717,7 +718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7761672489044257506, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7761672489044257507, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: target
@@ -747,7 +748,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7760464623932320726, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7761672489044257505, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: m_RootOrder
@@ -799,7 +800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7761672489044257506, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7761672489044257507, guid: 3f61fca060ff54de5b46fc5d7b048f64, type: 3}
       propertyPath: target
