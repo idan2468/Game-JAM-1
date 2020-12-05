@@ -34,21 +34,22 @@ public class UIController : MonoBehaviour
     {
         return instance;
     }
-
-    public IEnumerator sample()
-    {
-        //yield return UpdateDamageGUI(PlayerIndex.Player1, 2.5f, 0);
-        //Debug.Log("LoosenHearts " + loosenHeartsPlayer1.ToString());
-        //yield return UpdateDamageGUI(PlayerIndex.Player2, 1f, 0);
-        //Debug.Log("LoosenHearts " + loosenHeartsPlayer2.ToString());
-        //yield return UpdateHealGUI(PlayerIndex.Player1, 2.5f, 0);
-        //Debug.Log("LoosenHearts " + loosenHeartsPlayer1.ToString());
-        //yield return UpdateHealGUI(PlayerIndex.Player2, 1f, 0);
-        //Debug.Log("LoosenHearts " + loosenHeartsPlayer2.ToString());
-        //setLifeGUI(PlayerIndex.Player1, 0f);
-        //yield return new WaitForSeconds(5);
-        //setLifeGUI(PlayerIndex.Player1, 2f);
-    }
+    #region Sample func for testing
+    //public IEnumerator sample()
+    //{
+    //    //yield return UpdateDamageGUI(PlayerIndex.Player1, 2.5f, 0);
+    //    //Debug.Log("LoosenHearts " + loosenHeartsPlayer1.ToString());
+    //    //yield return UpdateDamageGUI(PlayerIndex.Player2, 1f, 0);
+    //    //Debug.Log("LoosenHearts " + loosenHeartsPlayer2.ToString());
+    //    //yield return UpdateHealGUI(PlayerIndex.Player1, 2.5f, 0);
+    //    //Debug.Log("LoosenHearts " + loosenHeartsPlayer1.ToString());
+    //    //yield return UpdateHealGUI(PlayerIndex.Player2, 1f, 0);
+    //    //Debug.Log("LoosenHearts " + loosenHeartsPlayer2.ToString());
+    //    //setLifeGUI(PlayerIndex.Player1, 0f);
+    //    //yield return new WaitForSeconds(5);
+    //    //setLifeGUI(PlayerIndex.Player1, 2f);
+    //}
+    #endregion
     public void UpdateDamageGUI(PlayerIndex playerIndex, float damage)
     {
         StartCoroutine(UpdateDamageGUI(playerIndex, damage, 0));
