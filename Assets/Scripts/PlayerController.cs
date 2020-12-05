@@ -2,7 +2,7 @@
 
 public enum PlayerIndex
 {
-    Player1 = 1, 
+    Player1 = 1,
     Player2 = 2
 }
 
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private PathMovement pathMovement;
     private bool isJumping;
 
-    
+
     void Start()
     {
         pathMovement = GetComponent<PathMovement>();
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        float horizontalMovement = Input.GetAxis("Horizontal_"+playerIndex);
+        float horizontalMovement = Input.GetAxis("Horizontal_" + playerIndex);
         if (horizontalMovement > Mathf.Epsilon)
         {
             pathMovement.MoveForward();
@@ -39,12 +39,12 @@ public class PlayerController : MonoBehaviour
             pathMovement.MoveBackwards();
         }
 
-        if (Input.GetAxis("Jump_"+playerIndex) > Mathf.Epsilon)
+        if (Input.GetAxis("Jump_" + playerIndex) > Mathf.Epsilon)
         {
             Jump();
         }
 
-        if (Input.GetButtonDown("Fire_"+playerIndex))
+        if (Input.GetButtonDown("Fire_" + playerIndex))
         {
             Fire();
         }
