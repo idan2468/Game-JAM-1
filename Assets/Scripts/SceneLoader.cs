@@ -28,7 +28,7 @@ public class SceneLoader : MonoBehaviour
     }
 
 
-    public SceneLoader getInstance()
+    public static SceneLoader getInstance()
     {
         return instance;
     }

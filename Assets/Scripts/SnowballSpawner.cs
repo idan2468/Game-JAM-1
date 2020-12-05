@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
@@ -49,7 +47,7 @@ public class SnowballSpawner : MonoBehaviour
             Debug.LogWarning("No More Snowballs in pool! None was spawned. :(");
         }
     }
-    
+
     public void AfterSnowballDie(SnowBall sb)
     {
         sb.gameObject.transform.SetParent(gameObject.transform);
