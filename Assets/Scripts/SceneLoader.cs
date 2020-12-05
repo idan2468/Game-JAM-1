@@ -13,6 +13,7 @@ public class SceneLoader : MonoBehaviour
         EndScene = 3,
     };
 
+
     private void Awake()
     {
         if (instance == null)
