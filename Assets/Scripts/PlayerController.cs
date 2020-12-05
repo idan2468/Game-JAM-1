@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
     public float jumpDuration;
     public GameObject body;
     public float damageResistance = 0;
-    
-    
+
+
     private RocketLauncher rocketLauncher;
     private PathMovement pathMovement;
     private bool isJumping;
