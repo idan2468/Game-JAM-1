@@ -26,7 +26,10 @@ public class UIController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    private void Start()
+    {
+        //StartCoroutine(sample());
+    }
     public static UIController getInstance()
     {
         return instance;
@@ -34,14 +37,17 @@ public class UIController : MonoBehaviour
 
     public IEnumerator sample()
     {
-        yield return UpdateDamageGUI(PlayerIndex.Player1, 2.5f, 0);
-        Debug.Log("LoosenHearts " + loosenHeartsPlayer1.ToString());
-        yield return UpdateDamageGUI(PlayerIndex.Player2, 1f, 0);
-        Debug.Log("LoosenHearts " + loosenHeartsPlayer2.ToString());
-        yield return UpdateHealGUI(PlayerIndex.Player1, 2.5f, 0);
-        Debug.Log("LoosenHearts " + loosenHeartsPlayer1.ToString());
-        yield return UpdateHealGUI(PlayerIndex.Player2, 1f, 0);
-        Debug.Log("LoosenHearts " + loosenHeartsPlayer2.ToString());
+        //yield return UpdateDamageGUI(PlayerIndex.Player1, 2.5f, 0);
+        //Debug.Log("LoosenHearts " + loosenHeartsPlayer1.ToString());
+        //yield return UpdateDamageGUI(PlayerIndex.Player2, 1f, 0);
+        //Debug.Log("LoosenHearts " + loosenHeartsPlayer2.ToString());
+        //yield return UpdateHealGUI(PlayerIndex.Player1, 2.5f, 0);
+        //Debug.Log("LoosenHearts " + loosenHeartsPlayer1.ToString());
+        //yield return UpdateHealGUI(PlayerIndex.Player2, 1f, 0);
+        //Debug.Log("LoosenHearts " + loosenHeartsPlayer2.ToString());
+        //setLifeGUI(PlayerIndex.Player1, 0f);
+        //yield return new WaitForSeconds(5);
+        //setLifeGUI(PlayerIndex.Player1, 2f);
     }
     public void UpdateDamageGUI(PlayerIndex playerIndex, float damage)
     {
@@ -50,6 +56,20 @@ public class UIController : MonoBehaviour
     public void UpdateHealGUI(PlayerIndex playerIndex, float heal)
     {
         StartCoroutine(UpdateHealGUI(playerIndex, heal, 0));
+    }
+    public void setLifeGUI(PlayerIndex playerIndex, float newLife)
+    {
+        var loosenHearts = playerIndex == PlayerIndex.Player1 ? loosenHeartsPlayer1 : loosenHeartsPlayer2;
+        var playerLife = TOTAL_NUN_HEARTS - loosenHearts;
+        var diff = Mathf.Abs(playerLife - newLife);
+        if (newLife > playerLife)
+        {
+            UpdateHealGUI(playerIndex, diff);
+        }
+        else
+        {
+            UpdateDamageGUI(playerIndex, diff);
+        }
     }
     private IEnumerator UpdateDamageGUI(PlayerIndex playerIndex, float damage, int dum = 0)
     {
