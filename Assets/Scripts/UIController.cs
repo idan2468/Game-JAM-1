@@ -13,6 +13,8 @@ public class UIController : MonoBehaviour
     private float loosenHeartsPlayer1 = 0;
     private float loosenHeartsPlayer2 = 0;
 
+    #region singleton design pattern
+
     private void Awake()
     {
         if (instance == null)
@@ -26,14 +28,18 @@ public class UIController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Start()
-    {
-        //StartCoroutine(sample());
-    }
     public static UIController getInstance()
     {
         return instance;
     }
+
+    #endregion
+    
+    private void Start()
+    {
+        //StartCoroutine(sample());
+    }
+   
     #region Sample func for testing
     //public IEnumerator sample()
     //{
@@ -83,7 +89,7 @@ public class UIController : MonoBehaviour
         int currHeartIndex = Mathf.FloorToInt(loosenHearts);
         while (damage > 0)
         {
-            float currDamage = damage > .5f && images[currHeartIndex].fillAmount == 1 ? 1f : .5f;
+            float currDamage = damage > .5f && (int)images[currHeartIndex].fillAmount == 1 ? 1f : .5f;
             float start = images[currHeartIndex].fillAmount;
             float end = start - currDamage;
             UpdateFillOfLifeHeartByIndex(currHeartIndex, playerIndex, start, end);
