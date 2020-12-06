@@ -304,7 +304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5409e840739b0248b44ad6f4f1b1b5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointToMove: {fileID: 1642412465}
+  startPoint: {fileID: 2141779615}
+  endPoint: {fileID: 1642412465}
   speed: 10
 --- !u!54 &1481002705
 Rigidbody:
