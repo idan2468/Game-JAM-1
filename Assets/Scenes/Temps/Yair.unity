@@ -503,6 +503,7 @@ GameObject:
   - component: {fileID: 1555372600}
   - component: {fileID: 1555372599}
   - component: {fileID: 1555372597}
+  - component: {fileID: 1555372603}
   - component: {fileID: 1555372602}
   - component: {fileID: 1555372598}
   - component: {fileID: 1555372596}
@@ -554,7 +555,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!23 &1555372599
 MeshRenderer:
@@ -638,6 +639,21 @@ MonoBehaviour:
   rotationSpeed: 5
   damageResistance: 0
   playerIndex: 1
+--- !u!114 &1555372603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555372595}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acaa68d8a1797fa4cb71bedf258a41ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  cam: {fileID: 551398209}
+  rotationSpeed: 8
 --- !u!1 &1795658527
 GameObject:
   m_ObjectHideFlags: 0

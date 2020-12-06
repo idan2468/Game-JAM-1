@@ -21,7 +21,7 @@ public class PlayerMoveBasic : MonoBehaviour
         if (dir.magnitude > .1)
         {
             var rotationDir = MoveToDir(dir);
-            // RotateTowardsMove(rotationDir);
+            RotateTowardsMove(rotationDir);
         }
     }
 
