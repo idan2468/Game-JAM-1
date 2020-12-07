@@ -1,33 +1,37 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class ElevatorController : MonoBehaviour
 {
-    [SerializeField]private GameObject startPoint;
-    [SerializeField]private GameObject endPoint;
-    [SerializeField]private float speed = 1.5f;
-
+    [SerializeField] private float speed = 1.5f;
+    [SerializeField] private float duration = 2f;
+    private Vector3 startPoint, endPoint;
     private float lastSpeed;
-    // Start is called before the first frame update
+    private LTDescr animation;
+    
     void Start()
     {
-        gameObject.transform.position = startPoint.transform.position;
-        LeanTween.move(gameObject,endPoint.transform.position,2f)
-            .setLoopPingPong(-1)
-            .setEase(LeanTweenType.easeInOutCubic)
-            .setSpeed(speed);
-        lastSpeed = speed;
+        if (transform.childCount < 2)
+        {
+            Debug.LogWarning("Object " + name + " is elevator with no points!");
+            return;
+        }
+
+        startPoint = transform.GetChild(0).position;
+        endPoint = transform.GetChild(1).position;
+        
+        ResetAnimation();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetAnimation()
     {
-        if (speed!= lastSpeed)
-        {
-            LeanTween.cancel(gameObject);
-            Start();
-        }
+        if (animation != null) LeanTween.cancel(animation.id);
+
+        gameObject.transform.position = startPoint;
+        animation = LeanTween.move(gameObject, endPoint, duration).setEaseInOutCubic().setLoopPingPong().setSpeed(speed);
     }
 }
