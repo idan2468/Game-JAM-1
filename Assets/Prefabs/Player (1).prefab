@@ -50,7 +50,7 @@ MonoBehaviour:
   target: {fileID: 0}
   launchForce: 500
   stabilizeRocketSpeed: 3
-  launchPoint: {fileID: 0}
+  playerController: {fileID: 8690904299031095309}
 --- !u!1 &8690904298885275803
 GameObject:
   m_ObjectHideFlags: 0

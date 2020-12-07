@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f269ee019b214935bd9509bf2a98f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 1
+  rotationSpeed: 20
   explosionParticles: {fileID: 3384775465631180038, guid: 80e94949d693248fe8df5f6a3de0f636, type: 3}
   lifeSpan: 10
   explosionRadius: 4

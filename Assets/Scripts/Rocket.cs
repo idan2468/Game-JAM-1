@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Rocket : MonoBehaviour
@@ -32,9 +33,11 @@ public class Rocket : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 direction = (target.position - transform.position).normalized;
-        transform.rotation = Quaternion.Lerp(transform.rotation,
-            Quaternion.AngleAxis(Mathf.Acos(Vector3.Dot(Vector3.forward, direction)) * Mathf.Rad2Deg, Vector3.Cross(Vector3.forward, direction)),
-            Time.fixedDeltaTime * rotationSpeed);
+        // transform.rotation = Quaternion.Slerp(transform.rotation,
+        // Quaternion.AngleAxis(Mathf.Acos(Vector3.Dot(Vector3.forward, direction)) * Mathf.Rad2Deg, Vector3.Cross(Vector3.forward, direction)),
+        // Time.fixedDeltaTime * rotationSpeed);
+        var targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
         rb.velocity = Mathf.Lerp(rb.velocity.magnitude, speed, Time.fixedDeltaTime) * transform.forward;
         // rb.velocity = rb.velocity.magnitude * transform.forward;
     }
@@ -60,19 +63,21 @@ public class Rocket : MonoBehaviour
     private void Explode()
     {
         Collider[] hits = new Collider[10];
+        var successfulHits = new List<IDamageable>();
         int count = Physics.OverlapSphereNonAlloc(transform.position, explosionRadius, hits);
         for (int i = 0; i < count; i++)
         {
             var hit = hits[i];
             IDamageable _hit = hit.gameObject.GetComponent<IDamageable>();
             if (_hit == null) continue;
+            successfulHits.Add(_hit);
             float t = Mathf.Clamp01(Vector3.Distance(transform.position, hit.transform.position) / explosionRadius);
             _hit.GetHit(Mathf.Clamp01(explosionImpactCurve.Evaluate(t)) * (1 + explosionPower / 100));
         }
 
         Instantiate(explosionParticles, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
-        launcher.AfterRocketDie(this);
+        launcher.AfterRocketDie(this, successfulHits);
     }
 
     private void OnDrawGizmosSelected()

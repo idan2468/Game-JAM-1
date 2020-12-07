@@ -76,13 +76,28 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Fire()
     {
-        Debug.Log("fire!");
         rocketLauncher.Launch();
     }
-    
+
+    private void setLife(int life)
+    {
+        lifePoints = Mathf.Clamp(life , 0, 3);
+        UIController.getInstance().setLifeGUI(playerIndex, lifePoints);
+    }
 
     public void GetHit(float power)
     {
-        UIController.getInstance().setLifeGUI(playerIndex, --lifePoints);
+        setLife(lifePoints - 1);
+        if (lifePoints == 0) Die();
+    }
+
+    private void Die()
+    {
+        Debug.Log(playerIndex + " died!");
+    }
+
+    public void SuccessfulHit()
+    {
+        setLife(lifePoints + 1);
     }
 }

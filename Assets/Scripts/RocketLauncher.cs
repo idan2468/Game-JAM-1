@@ -7,7 +7,8 @@ public class RocketLauncher : MonoBehaviour
     public Transform target;
     public float launchForce = 500f;
     public float stabilizeRocketSpeed = 3f;
-    
+
+    public PlayerController playerController;
     private Queue<Rocket> rocketPool;
 
     void Awake()
@@ -37,10 +38,16 @@ public class RocketLauncher : MonoBehaviour
         }
     }
 
-    public void AfterRocketDie(Rocket rocket)
+    public void AfterRocketDie(Rocket rocket, List<IDamageable> hits)
     {
         rocket.gameObject.transform.SetParent(gameObject.transform);
         rocketPool.Enqueue(rocket);
+
+        foreach (var hit in hits)
+        {
+            if (((MonoBehaviour) hit).gameObject.transform == target)
+                playerController.SuccessfulHit();
+        }
     }
 
 }
