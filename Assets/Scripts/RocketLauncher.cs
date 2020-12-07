@@ -5,9 +5,9 @@ using UnityEngine;
 public class RocketLauncher : MonoBehaviour
 {
     public Transform target;
-
-    // [SerializeField] private Rocket[] rockets;
-    [SerializeField] private Transform launchPoint;
+    public float launchForce = 500f;
+    public float stabilizeRocketSpeed = 3f;
+    
     private Queue<Rocket> rocketPool;
 
     void Awake()
@@ -29,7 +29,7 @@ public class RocketLauncher : MonoBehaviour
         {
             var rocket = rocketPool.Dequeue();
             rocket.gameObject.transform.SetParent(null);
-            rocket.Launch(launchPoint, target);
+            rocket.Launch(transform, target, launchForce, stabilizeRocketSpeed);
         }
         else
         {

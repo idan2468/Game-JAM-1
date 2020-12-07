@@ -6,24 +6,30 @@ public enum PlayerIndex
     Player1 = 1,
     Player2 = 2
 }
-public class PlayerController : MonoBehaviour
+
+[RequireComponent(typeof(CharacterController))]
+public class PlayerController : MonoBehaviour, IDamageable
 {
     public float jumpForce;
-    public float speed = 500;
+    public float speed = 5;
     public float rotationSpeed = 5;
-    public float damageResistance = 0;
     public PlayerIndex playerIndex;
 
-    float verticalMovement;
+    [SerializeField] private Camera cam;
+    public float gravity = 9.8f;
+    
     private RocketLauncher rocketLauncher;
-    private bool isJumping;
+    private bool isGrounded;
     private string horizontalIn, verticalIn, jumpIn, fireIn;
-    private Rigidbody rb;
+    private CharacterController controller;
+    private float verticalSpeed;
+    private int lifePoints;
 
     void Start()
     {
-        rocketLauncher = GetComponent<RocketLauncher>();
-        rb = GetComponent<Rigidbody>();
+        lifePoints = 3;
+        rocketLauncher = GetComponentInChildren<RocketLauncher>();
+        controller = GetComponent<CharacterController>();
         
         horizontalIn = "Horizontal_" + playerIndex;
         verticalIn = "Vertical_" + playerIndex;
@@ -33,41 +39,50 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        verticalMovement = Input.GetAxisRaw(verticalIn);
-        float horizontalMovement = Input.GetAxisRaw(horizontalIn);
-        transform.Rotate(Vector3.up, horizontalMovement * rotationSpeed);
-        rb.velocity = speed * verticalMovement * transform.forward;
 
-        // if (Input.GetAxis(jumpIn) > Mathf.Epsilon)
-        // {
-        //     Jump();
-        // }
-        //
-        // if (Input.GetButtonDown(fireIn))
-        // {
-        //     Fire();
-        // }
+        var vertical = Input.GetAxis(verticalIn);
+        var horizontal = Input.GetAxis(horizontalIn);
+        var dir = new Vector3(horizontal, 0, vertical);
+        Vector3 velocity = PlayerMove(dir).normalized * speed;
+        if (controller.isGrounded)
+        {
+            verticalSpeed = 0;  // When grounded, none velocity in y axis.
+            if (Input.GetAxis(jumpIn) > Mathf.Epsilon)
+                verticalSpeed = jumpForce;
+        }
+
+        verticalSpeed -= gravity * Time.deltaTime;
+        velocity.y = verticalSpeed;
+        controller.Move(velocity * Time.deltaTime);
+
+        if (Input.GetButtonDown(fireIn))
+        {
+            Fire();
+        }
     }
+
+    private Vector3 PlayerMove(Vector3 dir)
+    {
+        if (dir.magnitude <= .1) return Vector3.zero;
+
+        var forwardAccordingToCamera = Quaternion.Euler(0f, cam.gameObject.transform.eulerAngles.y, 0f) * dir;
+        var rotation = Quaternion.LookRotation(forwardAccordingToCamera);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
+
+        return forwardAccordingToCamera;
+    }
+
 
 
     private void Fire()
     {
+        Debug.Log("fire!");
         rocketLauncher.Launch();
     }
-
-
-
-    public void Jump()
-    {
-        if (isJumping) return;
-        isJumping = true;
-        // LeanTween.moveLocal(body, jumpForce * Vector3.up, jumpDuration).setLoopPingPong(1)
-        //     .setEaseOutQuad().setOnComplete(() => { isJumping = false; });
-    }
+    
 
     public void GetHit(float power)
     {
-        // Respawn(power * (1 - damageResistance / 100f));
-        UIController.getInstance().UpdateDamageGUI(playerIndex, power);
+        UIController.getInstance().setLifeGUI(playerIndex, --lifePoints);
     }
 }

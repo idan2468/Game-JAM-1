@@ -3,8 +3,6 @@
 [RequireComponent(typeof(Rigidbody))]
 public class Rocket : MonoBehaviour
 {
-    public float launchForce = 100f;
-    public float speed = 3f;
     public float rotationSpeed = 1;
     public ParticleSystem explosionParticles;
 
@@ -13,6 +11,7 @@ public class Rocket : MonoBehaviour
     public float explosionPower = 10;
     public AnimationCurve explosionImpactCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
+    private float speed;
     private Transform target;
     [HideInInspector] public RocketLauncher launcher;
     private Rigidbody rb;
@@ -37,10 +36,12 @@ public class Rocket : MonoBehaviour
             Quaternion.AngleAxis(Mathf.Acos(Vector3.Dot(Vector3.forward, direction)) * Mathf.Rad2Deg, Vector3.Cross(Vector3.forward, direction)),
             Time.fixedDeltaTime * rotationSpeed);
         rb.velocity = Mathf.Lerp(rb.velocity.magnitude, speed, Time.fixedDeltaTime) * transform.forward;
+        // rb.velocity = rb.velocity.magnitude * transform.forward;
     }
 
-    public void Launch(Transform spawnPoint, Transform _target)
+    public void Launch(Transform spawnPoint, Transform _target, float launchForce, float _speed)
     {
+        speed = _speed;
         target = _target;
         timer = lifeSpan;
         rb.velocity = Vector3.zero;
