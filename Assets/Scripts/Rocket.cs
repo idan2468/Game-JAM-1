@@ -36,7 +36,7 @@ public class Rocket : MonoBehaviour
         // transform.rotation = Quaternion.Slerp(transform.rotation,
         // Quaternion.AngleAxis(Mathf.Acos(Vector3.Dot(Vector3.forward, direction)) * Mathf.Rad2Deg, Vector3.Cross(Vector3.forward, direction)),
         // Time.fixedDeltaTime * rotationSpeed);
-        var targetRotation = Quaternion.LookRotation(direction);
+        var targetRotation = Quaternion.LookRotation(direction );
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
         rb.velocity = Mathf.Lerp(rb.velocity.magnitude, speed, Time.fixedDeltaTime) * transform.forward;
         // rb.velocity = rb.velocity.magnitude * transform.forward;
