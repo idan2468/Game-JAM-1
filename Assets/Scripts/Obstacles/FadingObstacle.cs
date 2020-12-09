@@ -12,7 +12,6 @@ public class FadingObstacle : MonoBehaviour
         TurnOnAnimation();
         _meshRenderer = GetComponent<MeshRenderer>();
         orgColor = _meshRenderer.material.color;
-        Debug.Log(orgColor);
     }
 
     private void TurnOnAnimation()
