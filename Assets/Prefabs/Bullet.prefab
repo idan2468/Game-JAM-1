@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 40
-  explosionParticles: {fileID: 3384775465631180038, guid: 80e94949d693248fe8df5f6a3de0f636, type: 3}
+  explosionParticles: {fileID: 4307934400255589649, guid: 8f851955fc8b64f979e25d91fe572c90, type: 3}
   lifeSpan: 10
   explosionRadius: 4
   explosionPower: 10
@@ -163,5 +163,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  axisAdjustment: {x: 1, y: 1, z: 1}
   launcher: {fileID: 0}

@@ -36,9 +36,6 @@ public class SnowBall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         IDamageable hit = other.gameObject.GetComponent<IDamageable>();
-        if (hit != null)
-        {
-            hit.GetHit(DamagePower / 100);
-        }
+        
     }
 }

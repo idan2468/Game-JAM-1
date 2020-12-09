@@ -1,4 +1,7 @@
-﻿public interface IDamageable
+﻿using UnityEngine;
+
+public interface IDamageable
 {
-    void GetHit(float power);
+    void GetHit(float power, Transform hit);
+    
 }
