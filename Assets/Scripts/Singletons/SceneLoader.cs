@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader : Singleton<SceneLoader>
 {
-    // Start is called before the first frame update
-    private static SceneLoader instance = null;
     public enum Scene
     {
         StartScene = 0,
@@ -12,27 +10,6 @@ public class SceneLoader : MonoBehaviour
         GameScene = 2,
         EndScene = 3,
     };
-
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            gameObject.SetActive(false);
-            Destroy(gameObject);
-        }
-    }
-
-
-    public static SceneLoader getInstance()
-    {
-        return instance;
-    }
 
     public void moveToScene(Scene scene)
     {
@@ -47,16 +24,5 @@ public class SceneLoader : MonoBehaviour
     {
         Application.Quit();
     }
-
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 }

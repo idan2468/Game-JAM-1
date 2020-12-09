@@ -82,7 +82,7 @@ public class Rocket : MonoBehaviour
             if (_hit == null) continue;
             successfulHits.Add(_hit);
             float t = Mathf.Clamp01(Vector3.Distance(transform.position, hit.transform.position) / explosionRadius);
-            _hit.GetHit(Mathf.Clamp01(explosionImpactCurve.Evaluate(t)) * (1 + explosionPower / 100), transform);
+            _hit.GetHit(explosionImpactCurve.Evaluate(t) * explosionPower, transform);
         }
 
         Instantiate(explosionParticles, transform.position, Quaternion.identity);

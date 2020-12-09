@@ -2838,11 +2838,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2775910144150148521, guid: e822c1a062b934cf681737c3ed9182d8, type: 3}
   m_PrefabInstance: {fileID: 1721524097}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &961919924 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4747285383412945187, guid: e822c1a062b934cf681737c3ed9182d8, type: 3}
-  m_PrefabInstance: {fileID: 1721524097}
+--- !u!114 &961919925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961919923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e261c580d36df04f8bdc6ad987ccc29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 2
 --- !u!64 &961919927
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2871,20 +2879,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4606343760111867964, guid: e822c1a062b934cf681737c3ed9182d8, type: 3}
---- !u!114 &961919929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961919923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5409e840739b0248b44ad6f4f1b1b5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1.5
-  duration: 2
 --- !u!1 &982764324 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1202406704551512633, guid: e822c1a062b934cf681737c3ed9182d8, type: 3}
@@ -3638,7 +3632,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.5
+  m_fontSize: 18
   m_fontSizeBase: 74.22
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3769,36 +3763,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 598915921}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1218042923
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1218042924}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1218042924
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218042923}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.85, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 961919924}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1224525730 stripped
 GameObject:
@@ -7067,36 +7031,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8690904299031095297, guid: a2d1d43e21d424a7abf5205bf9b16ee7, type: 3}
   m_PrefabInstance: {fileID: 1051364599}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1831777787
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1831777788}
-  m_Layer: 0
-  m_Name: GameObject (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1831777788
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1831777787}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.24, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 961919924}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1833359460 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2224809574039171895, guid: e822c1a062b934cf681737c3ed9182d8, type: 3}
@@ -7479,6 +7413,8 @@ MonoBehaviour:
   - {fileID: 1735930066}
   - {fileID: 1735930065}
   - {fileID: 1735930063}
+  loosenHeartsPlayer1: 0
+  loosenHeartsPlayer2: 0
 --- !u!4 &1959495119
 Transform:
   m_ObjectHideFlags: 0
