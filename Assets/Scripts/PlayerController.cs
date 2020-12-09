@@ -4,21 +4,24 @@ using UnityEngine.Serialization;
 
 public enum PlayerIndex
 {
-    Player1 = 1,
-    Player2 = 2
+    Player1,
+    Player2
 }
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour, IDamageable
 {
+    [Header("References")]
+    [SerializeField] private GameObject playerCoordinateSystem;
+    [SerializeField] private Camera cam;
+
+    [Header("Settings")]
+    public PlayerIndex playerIndex;
+    [SerializeField] private bool relativeToCamera = true;
     public float jumpForce;
     public float speed = 5;
     public float rotationSpeed = 5;
-    public PlayerIndex playerIndex;
-
-    [SerializeField] private GameObject playerCoordinateSystem;
-    [SerializeField] private Camera cam;
-    [SerializeField] private bool relativeToCamera = true;
+    public float fireCooldown = 3f;
     public float gravity = 9.8f;
 
     private RocketLauncher rocketLauncher;
@@ -26,11 +29,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     private string horizontalIn, verticalIn, jumpIn, fireIn;
     private CharacterController controller;
     private float verticalSpeed;
-    private int lifePoints;
+
+    private float fireCooldownTimer;
 
     void Start()
     {
-        lifePoints = 3;
         rocketLauncher = GetComponentInChildren<RocketLauncher>();
         controller = GetComponent<CharacterController>();
 
@@ -57,10 +60,13 @@ public class PlayerController : MonoBehaviour, IDamageable
         velocity.y = verticalSpeed;
         controller.Move(velocity * Time.deltaTime);
 
+        fireCooldownTimer = Mathf.Max(fireCooldownTimer - Time.deltaTime, 0);
+        
         if (Input.GetButtonDown(fireIn))
         {
             Fire();
         }
+        UIController.Instance.UpdatePlayerCooldownSlider(playerIndex, (fireCooldown - fireCooldownTimer) / fireCooldown);
     }
 
     private Vector3 PlayerMove(Vector3 dir)
@@ -79,28 +85,18 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Fire()
     {
-        rocketLauncher.Launch();
+        if (fireCooldownTimer <= 0)
+        {
+            fireCooldownTimer = fireCooldown;
+            rocketLauncher.Launch();
+        }
     }
 
-    private void setLife(int life)
-    {
-        lifePoints = Mathf.Clamp(life, 0, 3);
-        UIController.getInstance().setLifeGUI(playerIndex, lifePoints);
-    }
+ 
 
-    public void GetHit(float power)
+    public void GetHit(float power, Transform hit)
     {
-        setLife(lifePoints - 1);
-        if (lifePoints == 0) Die();
+        // controller;
     }
-
-    private void Die()
-    {
-        Debug.Log(playerIndex + " died!");
-    }
-
-    public void SuccessfulHit()
-    {
-        setLife(lifePoints + 1);
-    }
+    
 }
