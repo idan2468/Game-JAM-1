@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Header("Settings")]
     public PlayerIndex playerIndex;
     [SerializeField] private bool relativeToCamera = true;
+    [SerializeField] private bool relativeToPlayerCoordinatesPrefab = true;
     public float jumpForce;
     public float speed = 5;
     public float rotationSpeed = 5;
@@ -84,8 +85,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         if (dir.magnitude <= .1) return Vector3.zero;
         var forwardDir = relativeToCamera
-            ? cam.gameObject.transform.eulerAngles.y
-            : playerCoordinateSystem.transform.eulerAngles.y;
+                ? cam.gameObject.transform.eulerAngles.y
+                : playerCoordinateSystem.transform.eulerAngles.y;
         var forwardAccordingToCamera = Quaternion.Euler(0f, forwardDir, 0f) * dir;
         // forwardAccordingToCamera = dir; 
         var rotation = Quaternion.LookRotation(forwardAccordingToCamera);
