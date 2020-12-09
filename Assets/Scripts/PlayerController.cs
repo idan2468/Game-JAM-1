@@ -23,13 +23,14 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float rotationSpeed = 5;
     public float fireCooldown = 3f;
     public float gravity = 9.8f;
-
+    public Vector2 airResistance = new Vector2(5f, 5f);
+    
     private RocketLauncher rocketLauncher;
     private bool isGrounded;
     private string horizontalIn, verticalIn, jumpIn, fireIn;
     private CharacterController controller;
     private float verticalSpeed;
-
+    private Vector3 impactVelocity = Vector3.zero;
     private float fireCooldownTimer;
 
     void Start()
@@ -45,6 +46,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void Update()
     {
+        UpdateImpact();
+        
         var vertical = Input.GetAxis(verticalIn);
         var horizontal = Input.GetAxis(horizontalIn);
         var dir = new Vector3(horizontal, 0, vertical);
@@ -59,7 +62,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         verticalSpeed -= gravity * Time.deltaTime;
         velocity.y = verticalSpeed;
         controller.Move(velocity * Time.deltaTime);
-
         fireCooldownTimer = Mathf.Max(fireCooldownTimer - Time.deltaTime, 0);
         
         if (Input.GetButtonDown(fireIn))
@@ -69,6 +71,12 @@ public class PlayerController : MonoBehaviour, IDamageable
         UIController.Instance.UpdatePlayerCooldownSlider(playerIndex, (fireCooldown - fireCooldownTimer) / fireCooldown);
     }
 
+    private void UpdateImpact()
+    {
+        controller.Move(impactVelocity * Time.deltaTime);
+        impactVelocity = Vector3.ClampMagnitude(impactVelocity - new Vector3(airResistance.x, 0, airResistance.y) * Time.deltaTime, 0);
+    }
+    
     private Vector3 PlayerMove(Vector3 dir)
     {
         if (dir.magnitude <= .1) return Vector3.zero;
@@ -96,7 +104,10 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void GetHit(float power, Transform hit)
     {
-        // controller;
+        Vector3 direction = hit.position - transform.position;
+        direction.y = Mathf.Max(0, direction.y) + 2;
+        direction.Normalize();
+        impactVelocity += power * direction;
     }
     
 }
