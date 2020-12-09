@@ -24,7 +24,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float fireCooldown = 3f;
     public float gravity = 9.8f;
     public Vector2 airResistance = new Vector2(5f, 5f);
-    
+
+
+    private Rigidbody rb;
     private RocketLauncher rocketLauncher;
     private bool isGrounded;
     private string horizontalIn, verticalIn, jumpIn, fireIn;
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         rocketLauncher = GetComponentInChildren<RocketLauncher>();
         controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
 
         horizontalIn = "Horizontal_" + playerIndex;
         verticalIn = "Vertical_" + playerIndex;
@@ -74,7 +77,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void UpdateImpact()
     {
         controller.Move(impactVelocity * Time.deltaTime);
-        impactVelocity = Vector3.ClampMagnitude(impactVelocity - new Vector3(airResistance.x, 0, airResistance.y) * Time.deltaTime, 0);
+        impactVelocity = Vector3.ClampMagnitude(impactVelocity - new Vector3(airResistance.x, 0, airResistance.y), 0);
     }
     
     private Vector3 PlayerMove(Vector3 dir)
@@ -108,6 +111,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         direction.y = Mathf.Max(0, direction.y) + 2;
         direction.Normalize();
         impactVelocity += power * direction;
+        rb.AddForce(power * direction);
     }
     
 }
