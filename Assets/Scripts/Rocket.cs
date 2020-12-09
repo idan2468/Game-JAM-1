@@ -12,10 +12,8 @@ public class Rocket : MonoBehaviour
     public float explosionPower = 10;
     public AnimationCurve explosionImpactCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
-    public Vector3 axisAdjustment = Vector3.one; // This property defines how fast to travel through axes.
     
     private Transform target;
-    private float distanceFromTarget;
     [HideInInspector] public RocketLauncher launcher;
     private Rigidbody rb;
     private float timer;
@@ -33,47 +31,30 @@ public class Rocket : MonoBehaviour
         if (timer <= 0) Explode();
         
         Vector3 direction = (target.position - transform.position).normalized;
-        var targetRotation = Quaternion.LookRotation(direction).eulerAngles;
-        var rot = transform.rotation.eulerAngles;
-        Debug.DrawLine(transform.position, transform.position + Quaternion.Euler(targetRotation) * Vector3.forward, Color.green);
+        var targetRotation = Quaternion.LookRotation(direction);
+        var rot = transform.rotation;
+        
+        Debug.DrawLine(transform.position, transform.position + targetRotation * Vector3.forward, Color.green);
         Debug.DrawLine(transform.position, transform.position + transform.forward, Color.red);
     
-        float angleDifference = Quaternion.Angle(transform.rotation, Quaternion.Euler(targetRotation));
-        float delta = Time.deltaTime * rotationSpeed * Mathf.Exp(angleDifference % 180 / 180) *
-                      (1 + (lifeSpan - timer) / lifeSpan) * (2f - Mathf.Abs(angleDifference - previousDifference) / 180) *
-            (2f - Vector3.Distance(transform.position, target.position) / distanceFromTarget);
+        float angleDifference = Quaternion.Angle(rot, (targetRotation));
+        float delta = Time.deltaTime * rotationSpeed;
+        delta *= Mathf.Exp(angleDifference % 180 / 180);
+        delta *= 1 + (lifeSpan - timer) / lifeSpan;
+        delta *= 2f - Mathf.Abs(angleDifference - previousDifference) / 180;
+
         
-        Quaternion newRotation = Quaternion.identity;
-        int[] arr = {1, 0, 2};
-        foreach (var i in arr)
-        {
-            Vector3 axis = Vector3.zero;
-            axis[i] = 1;
-            newRotation *= Quaternion.RotateTowards(Quaternion.AngleAxis(rot[i], axis), Quaternion.AngleAxis(targetRotation[i], axis), delta * axisAdjustment[i]);
-        }
+        transform.rotation = Quaternion.RotateTowards(rot, targetRotation, delta);
         
-        transform.rotation = newRotation;
         rb.velocity = rb.velocity.magnitude * transform.forward;
         previousDifference = angleDifference;
     }
     
-
-
-    void FixedUpdate()
-    {
-        
-        // transform.rotation = Quaternion.Slerp(transform.rotation,
-        // Quaternion.AngleAxis(Mathf.Acos(Vector3.Dot(Vector3.forward, direction)) * Mathf.Rad2Deg, Vector3.Cross(Vector3.forward, direction)),
-        // Time.fixedDeltaTime * rotationSpeed);
-        
-        // rb.velocity = rb.velocity.magnitude * transform.forward;
-    }
-
+    
     public void Launch(Transform spawnPoint, Transform _target, float launchForce, float _speed)
     {
         target = _target;
         timer = lifeSpan;
-        distanceFromTarget = Vector3.Distance(target.position, transform.position);
         
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;

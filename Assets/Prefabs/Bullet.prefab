@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f269ee019b214935bd9509bf2a98f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 20
+  rotationSpeed: 40
   explosionParticles: {fileID: 3384775465631180038, guid: 80e94949d693248fe8df5f6a3de0f636, type: 3}
   lifeSpan: 10
   explosionRadius: 4
@@ -163,4 +163,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  axisAdjustment: {x: 1, y: 1, z: 1}
   launcher: {fileID: 0}
