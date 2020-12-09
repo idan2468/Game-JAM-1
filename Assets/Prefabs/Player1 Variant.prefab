@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3703341625916287987
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 921499379285846487, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980020093643969465, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3487315316173079367, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: camTransform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916179, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_Name
+      value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916181, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916181, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: playerIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916181, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: playerCoordinateSystem
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 33.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7286699
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6848651
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -86.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942662863739194256, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942662863739194256, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8958692385723643881, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
