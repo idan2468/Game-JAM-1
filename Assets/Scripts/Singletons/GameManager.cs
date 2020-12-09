@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
 
 	protected virtual void Start ()
 	{
-		SceneManager.LoadScene ( "Main Menu" );
+		
 	}
 
 	public string GetPlayerName ()
