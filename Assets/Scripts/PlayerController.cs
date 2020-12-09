@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     public Vector2 airResistance = new Vector2(5f, 5f);
 
 
-    private Rigidbody rb;
     private RocketLauncher rocketLauncher;
     private bool isGrounded;
     private string horizontalIn, verticalIn, jumpIn, fireIn;
@@ -39,7 +38,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         rocketLauncher = GetComponentInChildren<RocketLauncher>();
         controller = GetComponent<CharacterController>();
-        rb = GetComponent<Rigidbody>();
 
         horizontalIn = "Horizontal_" + playerIndex;
         verticalIn = "Vertical_" + playerIndex;
@@ -49,8 +47,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void Update()
     {
-        UpdateImpact();
-        
         var vertical = Input.GetAxis(verticalIn);
         var horizontal = Input.GetAxis(horizontalIn);
         var dir = new Vector3(horizontal, 0, vertical);
@@ -61,9 +57,11 @@ public class PlayerController : MonoBehaviour, IDamageable
             if (Input.GetAxis(jumpIn) > Mathf.Epsilon)
                 verticalSpeed = jumpForce;
         }
+        impactVelocity = Vector3.ClampMagnitude(impactVelocity - new Vector3(airResistance.x, 0, airResistance.y)*Time.deltaTime, 0);
 
         verticalSpeed -= gravity * Time.deltaTime;
         velocity.y = verticalSpeed;
+        velocity += impactVelocity;
         controller.Move(velocity * Time.deltaTime);
         fireCooldownTimer = Mathf.Max(fireCooldownTimer - Time.deltaTime, 0);
         
@@ -74,11 +72,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         UIController.Instance.UpdatePlayerCooldownSlider(playerIndex, (fireCooldown - fireCooldownTimer) / fireCooldown);
     }
 
-    private void UpdateImpact()
-    {
-        // controller.Move(impactVelocity * Time.deltaTime);
-        impactVelocity = Vector3.ClampMagnitude(impactVelocity - new Vector3(airResistance.x, 0, airResistance.y), 0);
-    }
     
     private Vector3 PlayerMove(Vector3 dir)
     {
@@ -107,11 +100,9 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void GetHit(float power, Transform hit)
     {
-        Vector3 direction = hit.position - transform.position;
-        direction.y = Mathf.Max(0, direction.y) + 2;
-        direction.Normalize();
+        Vector3 direction = hit.forward;
         impactVelocity += power * direction;
-        rb.AddForce(power * direction);
+        Debug.Log(impactVelocity);
     }
     
 }
