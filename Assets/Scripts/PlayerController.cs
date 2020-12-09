@@ -64,8 +64,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     private Vector3 PlayerMove(Vector3 dir)
     {
         if (dir.magnitude <= .1) return Vector3.zero;
-
-        var forwardAccordingToCamera = Quaternion.Euler(0f, cam.gameObject.transform.eulerAngles.y, 0f) * dir;
+        var forwardAccordingToCamera = Quaternion.Euler(0f, -157, 0f) * dir;
+        // forwardAccordingToCamera = dir; 
         var rotation = Quaternion.LookRotation(forwardAccordingToCamera);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
 
