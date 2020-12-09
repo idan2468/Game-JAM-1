@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void UpdateImpact()
     {
-        controller.Move(impactVelocity * Time.deltaTime);
+        // controller.Move(impactVelocity * Time.deltaTime);
         impactVelocity = Vector3.ClampMagnitude(impactVelocity - new Vector3(airResistance.x, 0, airResistance.y), 0);
     }
     
