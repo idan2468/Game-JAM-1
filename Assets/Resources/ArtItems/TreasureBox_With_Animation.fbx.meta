@@ -6,7 +6,22 @@ ModelImporter:
   - first:
       74: -1498010087492872569
     second: CINEMA_4D_Main
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat
+    second: {fileID: 2100000, guid: 232b66b65d8e142c3a8c406204d8dba8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat.1
+    second: {fileID: 2100000, guid: 6befff633c7e7479eb9e8a3820b0ff52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat.2
+    second: {fileID: 2100000, guid: 4515f24ed356f411a82185db9d38c9f0, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
