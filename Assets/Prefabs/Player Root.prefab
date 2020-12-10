@@ -424,7 +424,7 @@ MonoBehaviour:
   relativeToCamera: 0
   relativeToPlayerCoordinatesPrefab: 1
   jumpForce: 45
-  speed: 8
+  speed: 20
   rotationSpeed: 5
   fireCooldown: 0
   gravity: 60
