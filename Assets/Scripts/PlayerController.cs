@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Serialization;
-
+using UnityEngine.UI;
 
 
 // [RequireComponent(typeof(CharacterController))]
@@ -30,9 +30,11 @@ public class PlayerController : MonoBehaviour
     private int velocityID_animator;
     private int isGroundedID_animator;
     private int fireID_animator;
-    
+
     void Start()
     {
+        UIController.Instance.playersSliders[(int) playerIndex] = GetComponentInChildren<Slider>();
+        
         rocketLauncher = GetComponentInChildren<RocketLauncher>();
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
@@ -89,6 +91,7 @@ public class PlayerController : MonoBehaviour
 
     private void Fire()
     {
+        if (Time.timeScale < 0.01) return;
         if (fireCooldownTimer <= 0)
         {
             fireCooldownTimer = fireCooldown;
@@ -97,4 +100,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("Treasure"))
+        {
+            GameManager.Instance.OnPlayerWin(playerIndex);
+        }
+    }
 }
