@@ -7,34 +7,24 @@ public class TreasureController : MonoBehaviour
 {
     // Start is called before the first frame update
     private Animator animator;
-    private  int animatorOpenParam = Animator.StringToHash("needToOpen");
+    private  int animatorOpenParam = Animator.StringToHash("OpenChest");
 
     void Start()
     {
         animator = GetComponent<Animator>();
     }
     
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
+        Debug.Log(other.gameObject.name);
         if (other.gameObject.CompareTag("Player"))
         {
-            animator.SetBool(animatorOpenParam,true);
+            animator.SetTrigger(animatorOpenParam);
         }
     }
 
-    // private void OnControllerColliderHit(ControllerColliderHit hit)
-    // {
-    //     if (hit.collider.gameObject.CompareTag("Player"))
-    //     {
-    //         animator.SetBool(animatorOpenParam,true);
-    //     }
-    // }
-    //
-    // private void OnCollisionEnter(Collision other)
-    // { 
-    //     if (other.collider.gameObject.CompareTag("Player"))
-    //     {
-    //         animator.SetBool(animatorOpenParam,true);
-    //     }
-    // }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Trigger: " + other.name);
+    }
 }

@@ -2,11 +2,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public enum PlayerIndex
-{
-    Player1,
-    Player2
-}
+
 
 // [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour

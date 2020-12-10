@@ -775,6 +775,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5704785878540433693}
+  - component: {fileID: 208213796}
+  - component: {fileID: 208213795}
+  - component: {fileID: 1305054657891158325}
   m_Layer: 0
   m_Name: TreasureBox_With_Animation
   m_TagString: Untagged
@@ -789,7 +792,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4927122867476325287}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20.567081, y: 3.2, z: -43.524956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -797,6 +800,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &208213796
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927122867476325287}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 529d97910be447744a9bbf785f6cb9b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &208213795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927122867476325287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1862ddf503756f4bb69516faeb8f098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1305054657891158325
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4927122867476325287}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 14.584162, y: 8.961068, z: 9.395822}
+  m_Center: {x: 0.027667524, y: 1.0004869, z: -0.8091531}
 --- !u!1 &5311756951784280845
 GameObject:
   m_ObjectHideFlags: 0

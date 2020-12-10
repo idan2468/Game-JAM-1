@@ -3,20 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum PlayerIndex
+{
+	Player1,
+	Player2
+}
 public class GameManager : Singleton<GameManager>
 {
-	
-	[SerializeField]
-	protected string m_PlayerName;
 
-	protected virtual void Start ()
+	public void OnPlayerWin(PlayerIndex p)
 	{
-		
+		Debug.Log(p.ToString() + " Won!!");
+		Time.timeScale = 0;
+		StartCoroutine(MoveToWinScene());
 	}
 
-	public string GetPlayerName ()
+
+	private IEnumerator MoveToWinScene()
 	{
-		return m_PlayerName;
+		yield return new WaitForSeconds(2);
+		SceneLoader.Instance.moveToScene(SceneLoader.Scene.EndScene);
 	}
-	
 }

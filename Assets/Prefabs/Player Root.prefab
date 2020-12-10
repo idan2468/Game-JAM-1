@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: -4286068681079404012}
   m_Layer: 8
   m_Name: Player Root
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,7 +327,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8598161520014916181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,7 +388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8622374158921560360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.61, y: 2.96, z: 2.16}
+  m_LocalPosition: {x: -1.61, y: 0.6600001, z: 2.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1690026043492479392}
@@ -449,7 +449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.19497299, y: 6.23}
+  m_AnchoredPosition: {x: 0.19497299, y: 3.93}
   m_SizeDelta: {x: 10.505238, y: 1.3528931}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1980020093643969465
@@ -759,7 +759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 624e6041e17db43c6a448f336b14d98d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 624e6041e17db43c6a448f336b14d98d, type: 3}
       propertyPath: m_LocalPosition.z
