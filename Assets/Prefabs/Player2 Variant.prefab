@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 293a6a2cd0a2d4f978107061310ea3ec, type: 2}
     - target: {fileID: 8598161520014916179, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: m_Name
-      value: Player2
+      value: Player2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8598161520014916181, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: cam

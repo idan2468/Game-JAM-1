@@ -8,8 +8,8 @@ public enum PlayerIndex
     Player2
 }
 
-[RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour, IDamageable
+// [RequireComponent(typeof(CharacterController))]
+public class PlayerController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject playerCoordinateSystem;
@@ -100,11 +100,4 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
 
-    public void GetHit(float power, Transform hit)
-    {
-        Vector3 direction = hit.forward;
-        Debug.DrawRay(hit.position, hit.forward, Color.blue, 4f);
-        impactVelocity += power * direction;
-    }
-    
 }
