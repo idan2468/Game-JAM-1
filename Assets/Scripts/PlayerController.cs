@@ -24,21 +24,25 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 5;
     public float fireCooldown = 3f;
     public float gravity = 9.8f;
-    public Vector2 airResistance = new Vector2(5f, 5f);
-
 
     private RocketLauncher rocketLauncher;
-    private bool isGrounded;
     private string horizontalIn, verticalIn, jumpIn, fireIn;
     private CharacterController controller;
     private float verticalSpeed;
-    private Vector3 impactVelocity = Vector3.zero;
     private float fireCooldownTimer;
+    private Animator animator;
 
+    private int velocityID_animator;
+    private int isGroundedID_animator;
+    
     void Start()
     {
         rocketLauncher = GetComponentInChildren<RocketLauncher>();
         controller = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>();
+
+        velocityID_animator = Animator.StringToHash("Velocity");
+        isGroundedID_animator = Animator.StringToHash("IsGrounded");
 
         horizontalIn = "Horizontal_" + playerIndex;
         verticalIn = "Vertical_" + playerIndex;
@@ -52,23 +56,20 @@ public class PlayerController : MonoBehaviour
         var horizontal = Input.GetAxis(horizontalIn);
         var dir = new Vector3(horizontal, 0, vertical);
         Vector3 velocity = PlayerMove(dir).normalized * speed;
+        animator.SetFloat(velocityID_animator, velocity.magnitude);
+        velocity.y = verticalSpeed;
+        animator.SetBool(isGroundedID_animator, controller.isGrounded);
+
         if (controller.isGrounded)
         {
-            verticalSpeed = 0; // When grounded, none velocity in y axis.
-            if (Input.GetAxis(jumpIn) > Mathf.Epsilon)
-                verticalSpeed = jumpForce;
+            if (verticalSpeed < 0) verticalSpeed = -1; // When grounded, none velocity in y axis.
+            if (Input.GetAxisRaw(jumpIn) > .1f) verticalSpeed = jumpForce;
         }
 
-        impactVelocity.x = Mathf.Max(0, impactVelocity.x - airResistance.x * Time.deltaTime);
-        impactVelocity.z = Mathf.Max(0, impactVelocity.z - airResistance.y * Time.deltaTime);
-        impactVelocity.y = Mathf.Max(0, impactVelocity.y - gravity * Time.deltaTime);
-            
         verticalSpeed -= gravity * Time.deltaTime;
-        velocity.y = verticalSpeed;
-        velocity += impactVelocity;
         controller.Move(velocity * Time.deltaTime);
+
         fireCooldownTimer = Mathf.Max(fireCooldownTimer - Time.deltaTime, 0);
-        
         if (Input.GetButtonDown(fireIn))
         {
             Fire();
@@ -76,7 +77,6 @@ public class PlayerController : MonoBehaviour
         UIController.Instance.UpdatePlayerCooldownSlider(playerIndex, (fireCooldown - fireCooldownTimer) / fireCooldown);
     }
 
-    
     private Vector3 PlayerMove(Vector3 dir)
     {
         if (dir.magnitude <= .1) return Vector3.zero;
@@ -84,7 +84,6 @@ public class PlayerController : MonoBehaviour
                 ? cam.gameObject.transform.eulerAngles.y
                 : playerCoordinateSystem.transform.eulerAngles.y;
         var forwardAccordingToCamera = Quaternion.Euler(0f, forwardDir, 0f) * dir;
-        // forwardAccordingToCamera = dir; 
         var rotation = Quaternion.LookRotation(forwardAccordingToCamera);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         return forwardAccordingToCamera;
