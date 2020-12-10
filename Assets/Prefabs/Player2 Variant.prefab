@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 293a6a2cd0a2d4f978107061310ea3ec, type: 2}
+    - target: {fileID: 921499379285846487, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 4915159811710226858, guid: e76aef3712905406b90bbb147f665b1d, type: 3}
     - target: {fileID: 2820900442889416702, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -62,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 8598161520014916181, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4401731505160912271, guid: 4a438db6f6b9ac549abe8ff5d7f698ee, type: 3}
     - target: {fileID: 8598161520014916181, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: playerIndex
       value: 1
@@ -70,7 +74,7 @@ PrefabInstance:
     - target: {fileID: 8598161520014916181, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: playerCoordinateSystem
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8961250785324439101, guid: 561a26443b8d5154e91bebf937af3d93, type: 3}
     - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: m_RootOrder
       value: 0
