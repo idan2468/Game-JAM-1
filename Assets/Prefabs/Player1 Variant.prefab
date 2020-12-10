@@ -14,10 +14,18 @@ PrefabInstance:
     - target: {fileID: 921499379285846487, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 5142134020030003471, guid: 219147b0a60904b79bda374ecc8b7b11, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1980020093643969465, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: m_Camera
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2274188675610149759, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9708241
+      objectReference: {fileID: 0}
+    - target: {fileID: 2274188675610149759, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.2397925
       objectReference: {fileID: 0}
     - target: {fileID: 3487315316173079367, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: camTransform
@@ -25,12 +33,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8598161520014916179, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: m_Name
-      value: Player1 Variant
+      value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 8598161520014916181, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 4401731505160912271, guid: 4a438db6f6b9ac549abe8ff5d7f698ee, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8598161520014916181, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: playerIndex
       value: 0
@@ -38,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 8598161520014916181, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: playerCoordinateSystem
       value: 
-      objectReference: {fileID: 9078443702034823650, guid: 0c42aec4fedf3b44eb4d15f6ce526acd, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -49,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.2
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: m_LocalPosition.z

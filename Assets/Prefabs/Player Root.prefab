@@ -283,8 +283,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8598161520014916185}
-  - component: {fileID: 8598161520014916178}
   - component: {fileID: 8598161520014916181}
+  - component: {fileID: 8598161520014916178}
   - component: {fileID: -4286068681079404012}
   m_Layer: 8
   m_Name: Player Root
@@ -310,24 +310,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &8598161520014916178
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8598161520014916179}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 5.02
-  m_Radius: 0.8
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8598161520014916181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,8 +330,26 @@ MonoBehaviour:
   jumpForce: 45
   speed: 10
   rotationSpeed: 5
-  fireCooldown: 0
+  fireCooldown: 1
   gravity: 60
+--- !u!143 &8598161520014916178
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598161520014916179}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 5.02
+  m_Radius: 0.8
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-4286068681079404012
 MonoBehaviour:
   m_ObjectHideFlags: 0

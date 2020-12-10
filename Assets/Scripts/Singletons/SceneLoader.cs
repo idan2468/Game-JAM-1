@@ -6,17 +6,18 @@ public class SceneLoader : Singleton<SceneLoader>
     public enum Scene
     {
         StartScene = 0,
-        HowToPlayScene = 1,
-        GameScene = 2,
-        EndScene = 3,
+        GameScene = 1,
+        EndScene = 2,
     };
 
     public void moveToScene(Scene scene)
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene((int)scene);
     }
     public void moveToScene(string sceneName)
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
     }
 
