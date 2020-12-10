@@ -341,10 +341,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCoordinateSystem: {fileID: 650594025771339822, guid: a4dc6b047d1cb4140a7a159ffa5659f4, type: 3}
-  cam: {fileID: 0}
+  cam: {fileID: 4401731505160912271, guid: 4a438db6f6b9ac549abe8ff5d7f698ee, type: 3}
   playerIndex: 0
   relativeToCamera: 0
-  relativeToPlayerCoordinatesPrefab: 1
   jumpForce: 45
   speed: 10
   rotationSpeed: 5
@@ -362,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22282a4f8bc4743788ae7384e0d62382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 3
+  mass: 1
 --- !u!1 &8622374158921560360
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b28f31d08bc4bae925fc9176374ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camTransform: {fileID: 0}
+  camTransform: {fileID: 4401731505160912268, guid: 4a438db6f6b9ac549abe8ff5d7f698ee, type: 3}
 --- !u!1001 &833490044456491126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -959,14 +958,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 624e6041e17db43c6a448f336b14d98d, type: 3}
---- !u!4 &2661000398736486821 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -1074738222408532007, guid: 624e6041e17db43c6a448f336b14d98d, type: 3}
-  m_PrefabInstance: {fileID: 6194708453384097404}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5941021934852303255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 624e6041e17db43c6a448f336b14d98d, type: 3}
+  m_PrefabInstance: {fileID: 6194708453384097404}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2661000398736486821 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1074738222408532007, guid: 624e6041e17db43c6a448f336b14d98d, type: 3}
   m_PrefabInstance: {fileID: 6194708453384097404}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6309900262402961701

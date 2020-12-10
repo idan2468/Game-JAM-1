@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     [Header("Settings")]
     public PlayerIndex playerIndex;
     [SerializeField] private bool relativeToCamera = true;
-    [SerializeField] private bool relativeToPlayerCoordinatesPrefab = true;
     public float jumpForce;
     public float speed = 5;
     public float rotationSpeed = 5;
