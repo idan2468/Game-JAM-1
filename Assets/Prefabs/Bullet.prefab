@@ -128,8 +128,8 @@ MonoBehaviour:
   rotationSpeed: 40
   explosionParticles: {fileID: 4307934400255589649, guid: 8f851955fc8b64f979e25d91fe572c90, type: 3}
   lifeSpan: 10
-  explosionRadius: 10
-  explosionPower: 200
+  explosionRadius: 2.98
+  explosionPower: 56.2
   explosionImpactCurve:
     serializedVersion: 2
     m_Curve:

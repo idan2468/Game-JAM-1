@@ -58,8 +58,11 @@ public class PlayerController : MonoBehaviour, IDamageable
             if (Input.GetAxis(jumpIn) > Mathf.Epsilon)
                 verticalSpeed = jumpForce;
         }
-        impactVelocity = Vector3.ClampMagnitude(impactVelocity - new Vector3(airResistance.x, 0, airResistance.y)*Time.deltaTime, 0);
 
+        impactVelocity.x = Mathf.Max(0, impactVelocity.x - airResistance.x * Time.deltaTime);
+        impactVelocity.z = Mathf.Max(0, impactVelocity.z - airResistance.y * Time.deltaTime);
+        impactVelocity.y = Mathf.Max(0, impactVelocity.y - gravity * Time.deltaTime);
+            
         verticalSpeed -= gravity * Time.deltaTime;
         velocity.y = verticalSpeed;
         velocity += impactVelocity;
@@ -97,13 +100,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
 
- 
-
     public void GetHit(float power, Transform hit)
     {
         Vector3 direction = hit.forward;
+        Debug.DrawRay(hit.position, hit.forward, Color.blue, 4f);
         impactVelocity += power * direction;
-        Debug.Log(impactVelocity);
     }
     
 }

@@ -428,7 +428,7 @@ MonoBehaviour:
   rotationSpeed: 5
   fireCooldown: 0
   gravity: 60
-  airResistance: {x: 0.5, y: 0.5}
+  airResistance: {x: 2, y: 2}
 --- !u!143 &8598161520014916178
 CharacterController:
   m_ObjectHideFlags: 0
