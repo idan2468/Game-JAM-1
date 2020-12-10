@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private int velocityID_animator;
     private int isGroundedID_animator;
+    private int fireID_animator;
     
     void Start()
     {
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
         velocityID_animator = Animator.StringToHash("Velocity");
         isGroundedID_animator = Animator.StringToHash("IsGrounded");
+        fireID_animator = Animator.StringToHash("Fire");
 
         horizontalIn = "Horizontal_" + playerIndex;
         verticalIn = "Vertical_" + playerIndex;
@@ -96,6 +98,7 @@ public class PlayerController : MonoBehaviour
         {
             fireCooldownTimer = fireCooldown;
             rocketLauncher.Launch();
+            animator.SetTrigger(fireID_animator);
         }
     }
 
