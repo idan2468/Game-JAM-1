@@ -23,9 +23,6 @@ public class UIController : Singleton<UIController>
     
     public void UpdatePlayerCooldownSlider(PlayerIndex p, float val)
     {
-        if (playersSliders != null && playersSliders.Length >= (int)p)
-        {
-            playersSliders[(int) p].value = val;
-        }
+        playersSliders[(int) p].value = val;
     }
 }
