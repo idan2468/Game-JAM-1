@@ -33,12 +33,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8598161520014916179, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: m_Name
-      value: Player1
+      value: Player1 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8598161520014916181, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4401731505160912271, guid: 4a438db6f6b9ac549abe8ff5d7f698ee, type: 3}
     - target: {fileID: 8598161520014916181, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: playerIndex
       value: 0
@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 8598161520014916181, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: playerCoordinateSystem
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9078443702034823650, guid: 0c42aec4fedf3b44eb4d15f6ce526acd, type: 3}
     - target: {fileID: 8598161520014916185, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: m_RootOrder
       value: 0
