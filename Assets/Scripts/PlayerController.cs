@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
             fireCooldownTimer = fireCooldown;
             rocketLauncher.Launch();
             animator.SetTrigger(fireID_animator);
+            MusicController.Instance.PlaySound(MusicController.SoundEffects.Fire);
         }
     }
 

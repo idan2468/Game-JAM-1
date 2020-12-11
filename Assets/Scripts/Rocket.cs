@@ -87,6 +87,7 @@ public class Rocket : MonoBehaviour
 
         Instantiate(explosionParticles, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
+        MusicController.Instance.PlaySound(MusicController.SoundEffects.Hit);
         launcher.AfterRocketDie(this);
     }
 
