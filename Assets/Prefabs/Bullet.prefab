@@ -50,7 +50,7 @@ MonoBehaviour:
   explosionParticles: {fileID: 4307934400255589649, guid: 8f851955fc8b64f979e25d91fe572c90, type: 3}
   lifeSpan: 10
   explosionRadius: 3
-  explosionPower: 1200
+  explosionPower: 20
   explosionImpactCurve:
     serializedVersion: 2
     m_Curve:
@@ -84,7 +84,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  launcher: {fileID: 0}
 --- !u!135 &4182580884914499878
 SphereCollider:
   m_ObjectHideFlags: 0

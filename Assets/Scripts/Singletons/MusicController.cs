@@ -4,6 +4,7 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class MusicController : Singleton<MusicController>
 {
     public enum SoundEffects
@@ -11,6 +12,7 @@ public class MusicController : Singleton<MusicController>
         Hit,
         Fire,
         Jump,
+        ChestOpen,
     }
 
     private Dictionary<SoundEffects, AudioClip> _soundsEffects;
@@ -20,7 +22,7 @@ public class MusicController : Singleton<MusicController>
     private AudioSource _audioSource;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
         _audioSource.name = "Background Music";
@@ -28,6 +30,8 @@ public class MusicController : Singleton<MusicController>
         _audioSource.volume = _backgroundVolume;
         _soundsEffects = new Dictionary<SoundEffects, AudioClip>();
         LoadSoundClips();
+        
+        base.Awake();
     }
 
     private void LoadSoundClips()

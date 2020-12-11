@@ -71,7 +71,18 @@ public class Rocket : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Explode();
+        // Explode();
+        IDamageable hit = other.gameObject.GetComponent<IDamageable>();
+        hit?.GetHit(explosionPower, transform);
+        Explode2();
+    }
+
+
+    private void Explode2()
+    {
+        Instantiate(explosionParticles, transform.position, Quaternion.identity);
+        gameObject.SetActive(false);
+        onExplosion();
     }
 
     private void Explode()
