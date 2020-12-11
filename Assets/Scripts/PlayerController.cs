@@ -7,12 +7,12 @@ using UnityEngine.UI;
 // [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private GameObject playerCoordinateSystem;
+    [Header("References")] [SerializeField]
+    private GameObject playerCoordinateSystem;
+
     [SerializeField] private Camera cam;
 
-    [Header("Settings")]
-    public PlayerIndex playerIndex;
+    [Header("Settings")] public PlayerIndex playerIndex;
     [SerializeField] private bool relativeToCamera = true;
     public float jumpForce;
     public float speed = 5;
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         UIController.Instance.playersSliders[(int) playerIndex] = GetComponentInChildren<Slider>();
-        
+
         rocketLauncher = GetComponentInChildren<RocketLauncher>();
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
@@ -62,7 +62,13 @@ public class PlayerController : MonoBehaviour
         if (controller.isGrounded)
         {
             if (verticalSpeed < 0) verticalSpeed = -1; // When grounded, none velocity in y axis.
-            if (Input.GetAxisRaw(jumpIn) > .1f) verticalSpeed = jumpForce;
+            if (Input.GetAxisRaw(jumpIn) > .1f)
+            {
+                verticalSpeed = jumpForce;
+
+                // Sound Test without position
+                MusicController.Instance.PlaySound(MusicController.SoundEffects.Jump);
+            }
         }
 
         verticalSpeed -= gravity * Time.deltaTime;
@@ -73,15 +79,17 @@ public class PlayerController : MonoBehaviour
         {
             Fire();
         }
-        UIController.Instance.UpdatePlayerCooldownSlider(playerIndex, (fireCooldown - fireCooldownTimer) / fireCooldown);
+
+        UIController.Instance.UpdatePlayerCooldownSlider(playerIndex,
+            (fireCooldown - fireCooldownTimer) / fireCooldown);
     }
 
     private Vector3 PlayerMove(Vector3 dir)
     {
         if (dir.magnitude <= .1) return Vector3.zero;
         var forwardDir = relativeToCamera
-                ? cam.gameObject.transform.eulerAngles.y
-                : playerCoordinateSystem.transform.eulerAngles.y;
+            ? cam.gameObject.transform.eulerAngles.y
+            : playerCoordinateSystem.transform.eulerAngles.y;
         var forwardAccordingToCamera = Quaternion.Euler(0f, forwardDir, 0f) * dir;
         var rotation = Quaternion.LookRotation(forwardAccordingToCamera);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
@@ -97,6 +105,7 @@ public class PlayerController : MonoBehaviour
             fireCooldownTimer = fireCooldown;
             rocketLauncher.Launch();
             animator.SetTrigger(fireID_animator);
+            MusicController.Instance.PlaySound(MusicController.SoundEffects.Fire);
         }
     }
 
