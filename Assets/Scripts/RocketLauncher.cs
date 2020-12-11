@@ -25,6 +25,7 @@ public class RocketLauncher : MonoBehaviour
     {
         if (rocketPool.Any())
         {
+            MusicController.Instance.PlaySound(MusicController.SoundEffects.Fire);
             var rocket = rocketPool.Dequeue();
             rocket.gameObject.transform.SetParent(null);
             rocket.Launch(transform, target, launchForce, () => { AfterRocketDie(rocket); });
@@ -37,6 +38,7 @@ public class RocketLauncher : MonoBehaviour
 
     private void AfterRocketDie(Rocket rocket)
     {
+        MusicController.Instance.PlaySound(MusicController.SoundEffects.Hit);
         rocket.gameObject.transform.SetParent(gameObject.transform);
         rocketPool.Enqueue(rocket);
     }
