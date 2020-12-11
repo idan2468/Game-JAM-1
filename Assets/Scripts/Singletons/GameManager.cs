@@ -49,7 +49,7 @@ public class GameManager : Singleton<GameManager>
 		Debug.Log(p.ToString() + " Won!!");
 		treasureAnimator?.SetTrigger("OpenTreasure");
 		UIController.Instance.UpdatePlayerWon(p);
-		Time.timeScale = 0;
+		Time.timeScale = .1f;
 		StartCoroutine(MoveToWinScene());
 	}
 

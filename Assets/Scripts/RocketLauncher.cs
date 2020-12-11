@@ -6,8 +6,7 @@ public class RocketLauncher : MonoBehaviour
 {
     public Transform target;
     public float launchForce = 500f;
-    public float stabilizeRocketSpeed = 3f;
-
+    
     private Queue<Rocket> rocketPool;
 
     void Awake()
@@ -18,7 +17,6 @@ public class RocketLauncher : MonoBehaviour
             Rocket rocket = child.gameObject.GetComponent<Rocket>();
             if (rocket == null) continue;
 
-            rocket.launcher = this;
             rocketPool.Enqueue(rocket);
         }
     }
@@ -29,7 +27,7 @@ public class RocketLauncher : MonoBehaviour
         {
             var rocket = rocketPool.Dequeue();
             rocket.gameObject.transform.SetParent(null);
-            rocket.Launch(transform, target, launchForce, stabilizeRocketSpeed);
+            rocket.Launch(transform, target, launchForce, () => { AfterRocketDie(rocket); });
         }
         else
         {
@@ -37,7 +35,7 @@ public class RocketLauncher : MonoBehaviour
         }
     }
 
-    public void AfterRocketDie(Rocket rocket)
+    private void AfterRocketDie(Rocket rocket)
     {
         rocket.gameObject.transform.SetParent(gameObject.transform);
         rocketPool.Enqueue(rocket);

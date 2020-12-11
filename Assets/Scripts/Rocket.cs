@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -14,11 +15,12 @@ public class Rocket : MonoBehaviour
 
     
     private Transform target;
-    [HideInInspector] public RocketLauncher launcher;
     private Rigidbody rb;
     private float timer;
 
     private float previousDifference;
+    private Action onExplosion;
+    
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -51,10 +53,12 @@ public class Rocket : MonoBehaviour
     }
     
     
-    public void Launch(Transform spawnPoint, Transform _target, float launchForce, float _speed)
+    public void Launch(Transform spawnPoint, Transform _target, float launchForce, Action onExplosion)
     {
         target = _target;
         timer = lifeSpan;
+
+        this.onExplosion = onExplosion;
         
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
@@ -87,7 +91,7 @@ public class Rocket : MonoBehaviour
 
         Instantiate(explosionParticles, transform.position, Quaternion.identity);
         gameObject.SetActive(false);
-        launcher.AfterRocketDie(this);
+        onExplosion();
     }
 
     private void OnDrawGizmosSelected()
