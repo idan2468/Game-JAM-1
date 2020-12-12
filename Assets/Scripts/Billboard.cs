@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,11 @@ using UnityEngine;
 public class Billboard : MonoBehaviour
 {
     public Transform camTransform;
+
+    private void Awake()
+    {
+        camTransform = Camera.main.transform;
+    }
 
     void LateUpdate()
     {

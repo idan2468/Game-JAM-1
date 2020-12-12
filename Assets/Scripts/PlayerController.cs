@@ -33,8 +33,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        UIController.Instance.playersSliders[(int) playerIndex] = GetComponentInChildren<Slider>();
-
+        // UIController.Instance.playersSliders[(int) playerIndex] = GetComponentInChildren<Slider>();
+        UIController.Instance.playersCooldown[(int) playerIndex] = GetComponentInChildren<Image>();
+        
         rocketLauncher = GetComponentInChildren<RocketLauncher>();
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
@@ -80,8 +81,8 @@ public class PlayerController : MonoBehaviour
             Fire();
         }
 
-        UIController.Instance.UpdatePlayerCooldownSlider(playerIndex,
-            (fireCooldown - fireCooldownTimer) / fireCooldown);
+        // UIController.Instance.UpdatePlayerCooldownSlider(playerIndex, (fireCooldown - fireCooldownTimer) / fireCooldown);
+        UIController.Instance.UpdatePlayerCooldownImage(playerIndex, (fireCooldown - fireCooldownTimer) / fireCooldown);
     }
 
     private Vector3 PlayerMove(Vector3 dir)
