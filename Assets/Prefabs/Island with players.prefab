@@ -133,13 +133,11 @@ MonoBehaviour:
   cam: {fileID: 8093936015355756838}
   playerIndex: 0
   relativeToCamera: 0
-  relativeToPlayerCoordinatesPrefab: 1
   jumpForce: 50
   speed: 20
   rotationSpeed: 5
   fireCooldown: 0
   gravity: 75
-  airResistance: {x: 0.5, y: 0.5}
 --- !u!143 &385922773548642453
 CharacterController:
   m_ObjectHideFlags: 0
@@ -303,7 +301,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   launchForce: 30
-  stabilizeRocketSpeed: 10
 --- !u!1 &503874105524679655
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,7 +654,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d06b376cb9c1c4b62b1a3200534f68bc, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -758,7 +755,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  launcher: {fileID: 0}
 --- !u!1 &1066496537287451147
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +980,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d06b376cb9c1c4b62b1a3200534f68bc, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1085,7 +1081,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  launcher: {fileID: 0}
 --- !u!1 &2116851878561440422
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,7 +2141,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: da72baef221614cc8b29db683b0ea000, type: 2}
+  - {fileID: 2100000, guid: 9cc8d33de0cd047b489d635b310bd88d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2244,7 +2239,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d06b376cb9c1c4b62b1a3200534f68bc, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2345,7 +2340,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  launcher: {fileID: 0}
 --- !u!1 &3775832425694912370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,7 +2402,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d06b376cb9c1c4b62b1a3200534f68bc, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2509,7 +2503,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  launcher: {fileID: 0}
 --- !u!1 &3818041279298185208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,6 +2549,7 @@ MonoBehaviour:
   playersSliders:
   - {fileID: 5772796413859437035}
   - {fileID: 4495871481860346626}
+  playerWinMessage: {fileID: 0}
 --- !u!1 &4408420297139953799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3705,7 +3699,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d06b376cb9c1c4b62b1a3200534f68bc, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3806,7 +3800,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  launcher: {fileID: 0}
 --- !u!1 &6763916724170965534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3869,7 +3862,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d06b376cb9c1c4b62b1a3200534f68bc, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3970,7 +3963,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  launcher: {fileID: 0}
 --- !u!1 &6968590869131045090
 GameObject:
   m_ObjectHideFlags: 0
@@ -4114,7 +4106,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d06b376cb9c1c4b62b1a3200534f68bc, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4215,7 +4207,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  launcher: {fileID: 0}
 --- !u!1 &7280458721927965153
 GameObject:
   m_ObjectHideFlags: 0
@@ -4559,13 +4550,11 @@ MonoBehaviour:
   cam: {fileID: 8093936015355756838}
   playerIndex: 1
   relativeToCamera: 0
-  relativeToPlayerCoordinatesPrefab: 1
   jumpForce: 50
   speed: 20
   rotationSpeed: 5
   fireCooldown: 0
   gravity: 75
-  airResistance: {x: 0.5, y: 0.5}
 --- !u!143 &7719889106405980796
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4729,7 +4718,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   launchForce: 30
-  stabilizeRocketSpeed: 10
 --- !u!1 &7895439157368637455
 GameObject:
   m_ObjectHideFlags: 0
@@ -5251,7 +5239,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d06b376cb9c1c4b62b1a3200534f68bc, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5352,7 +5340,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  launcher: {fileID: 0}
 --- !u!1 &8609543711277890048
 GameObject:
   m_ObjectHideFlags: 0
