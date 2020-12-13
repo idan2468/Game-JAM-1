@@ -16,12 +16,12 @@ public class MenuItem : MonoBehaviour
 
     public void SetInFront()
     {
-        canvas.sortingOrder = 20;
+       if (canvas != null) canvas.sortingOrder = 20;
     }
 
     public void UnsetInFront()
     {
-        canvas.sortingOrder = originalSort;
+        if (canvas != null) canvas.sortingOrder = originalSort;
     }
 
     public void PlayClick()

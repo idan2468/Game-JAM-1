@@ -21,11 +21,12 @@ public class GameManager : Singleton<GameManager>
 	private CinemachineVirtualCamera mainCamera;
 	private Transform endCameraPosition;
 	[SerializeField]private GameObject endGameCanvas;
+	[SerializeField] private float timeUntilWinning = 5;
+	private Sprite[] endGameImages;
+	private PlayerIndex winner;
 
 	private void Awake()
 	{
-		// treasure = GameObject.FindWithTag("Treasure");
-		// endGameCanvas = GameObject.FindWithTag("EndGameCanvas");
 		if (treasure == null)
 		{
 			Debug.LogWarning("GameManager Warning: No Treasure in Scene!");
@@ -34,23 +35,22 @@ public class GameManager : Singleton<GameManager>
 
 		treasureAnimator = treasure.GetComponent<Animator>();
 		if (treasureAnimator == null) Debug.LogWarning("GameManager Warning: No Treasure Animation!");
-		
-		mainCamera = Camera.main.GetComponentInChildren<CinemachineVirtualCamera>();
-		endCameraPosition = Resources.Load<Transform>("Camera End Position");
+		endGameImages = new[] {Resources.Load<Sprite>("Player1_Win"), Resources.Load<Sprite>("Player2_Win")};
+
 	}
 
-	// #region Menus
-	// [UnityEditor.MenuItem("Winning/Win Player1")]
-	// public static void Win1()
-	// {
-	// 	GameManager.Instance.OnPlayerWin(PlayerIndex.Player1);
-	// }
-	// [UnityEditor.MenuItem("Winning/Win Player2")]
-	// public static void Win2()
-	// {
-	// 	GameManager.Instance.OnPlayerWin(PlayerIndex.Player2);
-	// }
-	// #endregion
+	#region Menus
+	[UnityEditor.MenuItem("Winning/Win Player1")]
+	public static void Win1()
+	{
+		GameManager.Instance.OnPlayerWin(PlayerIndex.Player1);
+	}
+	[UnityEditor.MenuItem("Winning/Win Player2")]
+	public static void Win2()
+	{
+		GameManager.Instance.OnPlayerWin(PlayerIndex.Player2);
+	}
+	#endregion
 	
 	
 	public void OnPlayerWin(PlayerIndex p)
@@ -59,20 +59,20 @@ public class GameManager : Singleton<GameManager>
 		UIController.Instance.UpdatePlayerWon(p);
 		Time.timeScale = .1f;
 
-		mainCamera.LookAt = endCameraPosition;
-		
+		winner = p;
 		StartCoroutine(MoveToWinScene());
 	}
 
 
 	private IEnumerator MoveToWinScene()
 	{
-		yield return new WaitForSecondsRealtime(3.5f);
+		yield return new WaitForSecondsRealtime(timeUntilWinning);
 		Debug.Log("Loaded end scene");
-		// SceneLoader.Instance.moveToScene(SceneLoader.Scene.EndScene);
 		endGameCanvas.SetActive(true);
+		Time.timeScale = 0;
 		var imageObject = endGameCanvas.transform.GetChild(1).gameObject;
 		var imageComponent = imageObject.GetComponent<Image>();
-		imageComponent.sprite = Resources.Load<Sprite>("UIMainMenu");
+		
+		imageComponent.sprite = endGameImages[(int)winner];
 	}
 }
