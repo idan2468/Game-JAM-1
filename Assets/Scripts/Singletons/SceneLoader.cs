@@ -1,8 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : Singleton<SceneLoader>
 {
+    private void Start()
+    {
+        MusicController.Instance.PlayMenuBGM();
+    }
+
     public enum Scene
     {
         StartScene = 0,
