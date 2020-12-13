@@ -182,7 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b28f31d08bc4bae925fc9176374ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camTransform: {fileID: 0}
 --- !u!1 &3617554180470775887
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.735849, g: 0.53637683, b: 0.3436276, a: 0.3882353}
+  m_Color: {r: 0.7372549, g: 0.35302335, b: 0.34509805, a: 0.7529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -766,7 +765,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b28f31d08bc4bae925fc9176374ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camTransform: {fileID: 4401731505160912268, guid: 4a438db6f6b9ac549abe8ff5d7f698ee, type: 3}
 --- !u!1001 &833490044456491126
 PrefabInstance:
   m_ObjectHideFlags: 0

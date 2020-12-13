@@ -10,6 +10,7 @@ public class UIController : Singleton<UIController>
     public Slider[] playersSliders;
     public Image[] playersCooldown;
     public TMP_Text playerWinMessage;
+
     protected override void Awake()
     {
         playersSliders = new Slider[2];
@@ -30,6 +31,7 @@ public class UIController : Singleton<UIController>
 
     public void UpdatePlayerCooldownImage(PlayerIndex p, float val)
     {
-        playersCooldown[(int) p].fillAmount = val;
+        var cd = playersCooldown[(int) p];
+        cd.fillAmount = val;
     }
 }

@@ -6,11 +6,12 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    public Transform camTransform;
+    public static Transform camTransform;
 
     private void Awake()
     {
-        camTransform = Camera.main.transform;
+        if (camTransform == null)
+            camTransform = Camera.main.transform;
     }
 
     void LateUpdate()
