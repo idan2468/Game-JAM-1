@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using Cinemachine;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum PlayerIndex
 {
@@ -13,15 +15,17 @@ public enum PlayerIndex
 }
 public class GameManager : Singleton<GameManager>
 {
-	private GameObject treasure;
+	[SerializeField]private GameObject treasure;
 	private Animator treasureAnimator;
 	private ParticleSystem winningEffect;
 	private CinemachineVirtualCamera mainCamera;
 	private Transform endCameraPosition;
-	
+	[SerializeField]private GameObject endGameCanvas;
+
 	private void Awake()
 	{
-		treasure = GameObject.FindWithTag("Treasure");
+		// treasure = GameObject.FindWithTag("Treasure");
+		// endGameCanvas = GameObject.FindWithTag("EndGameCanvas");
 		if (treasure == null)
 		{
 			Debug.LogWarning("GameManager Warning: No Treasure in Scene!");
@@ -65,6 +69,10 @@ public class GameManager : Singleton<GameManager>
 	{
 		yield return new WaitForSecondsRealtime(3.5f);
 		Debug.Log("Loaded end scene");
-		SceneLoader.Instance.moveToScene(SceneLoader.Scene.EndScene);
+		// SceneLoader.Instance.moveToScene(SceneLoader.Scene.EndScene);
+		endGameCanvas.SetActive(true);
+		var imageObject = endGameCanvas.transform.GetChild(1).gameObject;
+		var imageComponent = imageObject.GetComponent<Image>();
+		imageComponent.sprite = Resources.Load<Sprite>("UIMainMenu");
 	}
 }
