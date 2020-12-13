@@ -33,9 +33,14 @@ public class MenuItem : MonoBehaviour
     {
         MusicController.Instance.PlaySound(MusicController.SoundEffects.Hover);
     }
-
-    public void ChangeVolume(Slider slider)
+    
+    public void ChangeSFXVolume(Slider slider)
     {
         MusicController.Instance.ChangeSoundEffectsVolume(slider);
+    }
+
+    public void ChangeBGMVolume(Slider slider)
+    {
+        MusicController.Instance._audioSource.volume = slider.value;
     }
 }

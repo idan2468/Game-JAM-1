@@ -9,6 +9,8 @@ public class MusicController : Singleton<MusicController>
 {
     public enum SoundEffects
     {
+        MainMenu_DrunkenSailor,
+        BGM,
         Hit,
         Fire,
         Jump,
@@ -19,9 +21,9 @@ public class MusicController : Singleton<MusicController>
 
     private Dictionary<SoundEffects, AudioClip> _soundsEffects;
     private const string FileExt = "";
-    private float _backgroundVolume = 0.05f;
-    private float _effectsVolume = 1f;
-    private AudioSource _audioSource;
+    private float _backgroundVolume = 0.8f;
+    private float _effectsVolume = .8f;
+    public AudioSource _audioSource;
 
     // Start is called before the first frame update
     protected override void Awake()
@@ -30,8 +32,11 @@ public class MusicController : Singleton<MusicController>
         _audioSource.name = "Background Music";
         _audioSource.loop = true;
         _audioSource.volume = _backgroundVolume;
+        
         _soundsEffects = new Dictionary<SoundEffects, AudioClip>();
         LoadSoundClips();
+        _audioSource.clip = _soundsEffects[SoundEffects.MainMenu_DrunkenSailor];
+        _audioSource.Play();
         
         base.Awake();
     }
@@ -45,9 +50,7 @@ public class MusicController : Singleton<MusicController>
             _soundsEffects[sound] = audioClip;
         }
     }
-
-    // Update is called once per frame
-
+    
     public void PlaySound(SoundEffects soundEffects)
     {
         var soundToPlay = _soundsEffects[soundEffects];
@@ -77,4 +80,21 @@ public class MusicController : Singleton<MusicController>
     {
         _effectsVolume = slider.value;
     }
+
+    public void PlayGameBGM()
+    {
+        var toPlay = _soundsEffects[SoundEffects.BGM];
+        if (_audioSource.clip == toPlay) return;
+        _audioSource.clip = toPlay;
+        _audioSource.Play();
+    }
+
+    public void PlayMenuBGM()
+    {
+        var toPlay = _soundsEffects[SoundEffects.MainMenu_DrunkenSailor];
+        if (_audioSource.clip == toPlay) return;
+        _audioSource.clip = toPlay;
+        _audioSource.Play();
+    }
+    
 }
