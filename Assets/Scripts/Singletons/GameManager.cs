@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,9 @@ public class GameManager : Singleton<GameManager>
 	private GameObject treasure;
 	private Animator treasureAnimator;
 	private ParticleSystem winningEffect;
+	private CinemachineVirtualCamera mainCamera;
+	private Transform endCameraPosition;
+	
 	private void Awake()
 	{
 		treasure = GameObject.FindWithTag("Treasure");
@@ -26,8 +30,9 @@ public class GameManager : Singleton<GameManager>
 
 		treasureAnimator = treasure.GetComponent<Animator>();
 		if (treasureAnimator == null) Debug.LogWarning("GameManager Warning: No Treasure Animation!");
-
 		
+		mainCamera = Camera.main.GetComponentInChildren<CinemachineVirtualCamera>();
+		endCameraPosition = Resources.Load<Transform>("Camera End Position");
 	}
 
 	#region Menus
@@ -50,6 +55,9 @@ public class GameManager : Singleton<GameManager>
 		treasureAnimator?.SetTrigger("OpenTreasure");
 		UIController.Instance.UpdatePlayerWon(p);
 		Time.timeScale = .1f;
+
+		mainCamera.LookAt = endCameraPosition;
+		
 		StartCoroutine(MoveToWinScene());
 	}
 
