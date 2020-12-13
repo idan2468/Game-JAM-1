@@ -13,6 +13,8 @@ public class MusicController : Singleton<MusicController>
         Fire,
         Jump,
         ChestOpen,
+        Click, 
+        Hover,
     }
 
     private Dictionary<SoundEffects, AudioClip> _soundsEffects;
@@ -52,6 +54,19 @@ public class MusicController : Singleton<MusicController>
         _audioSource.PlayOneShot(soundToPlay, _effectsVolume);
     }
 
+    public void PlaySound(string soundName)
+    {
+        if (Enum.TryParse(soundName, true, out SoundEffects sound))
+        {
+            PlaySound(sound);
+        }
+        else
+        {
+            Debug.Log("The sound " + soundName + " was not found!");
+        }
+
+    }
+    
     public void PlaySound(SoundEffects soundEffects, Vector3 position)
     {
         var soundToPlay = _soundsEffects[soundEffects];

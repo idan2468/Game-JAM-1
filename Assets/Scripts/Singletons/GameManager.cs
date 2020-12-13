@@ -31,12 +31,12 @@ public class GameManager : Singleton<GameManager>
 	}
 
 	#region Menus
-	[MenuItem("Winning/Win Player1")]
+	[UnityEditor.MenuItem("Winning/Win Player1")]
 	public static void Win1()
 	{
 		GameManager.Instance.OnPlayerWin(PlayerIndex.Player1);
 	}
-	[MenuItem("Winning/Win Player2")]
+	[UnityEditor.MenuItem("Winning/Win Player2")]
 	public static void Win2()
 	{
 		GameManager.Instance.OnPlayerWin(PlayerIndex.Player2);
