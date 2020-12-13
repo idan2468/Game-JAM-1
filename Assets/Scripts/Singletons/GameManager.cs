@@ -35,23 +35,22 @@ public class GameManager : Singleton<GameManager>
 		endCameraPosition = Resources.Load<Transform>("Camera End Position");
 	}
 
-	#region Menus
-	[UnityEditor.MenuItem("Winning/Win Player1")]
-	public static void Win1()
-	{
-		GameManager.Instance.OnPlayerWin(PlayerIndex.Player1);
-	}
-	[UnityEditor.MenuItem("Winning/Win Player2")]
-	public static void Win2()
-	{
-		GameManager.Instance.OnPlayerWin(PlayerIndex.Player2);
-	}
-	#endregion
+	// #region Menus
+	// [UnityEditor.MenuItem("Winning/Win Player1")]
+	// public static void Win1()
+	// {
+	// 	GameManager.Instance.OnPlayerWin(PlayerIndex.Player1);
+	// }
+	// [UnityEditor.MenuItem("Winning/Win Player2")]
+	// public static void Win2()
+	// {
+	// 	GameManager.Instance.OnPlayerWin(PlayerIndex.Player2);
+	// }
+	// #endregion
 	
 	
 	public void OnPlayerWin(PlayerIndex p)
 	{
-		Debug.Log(p.ToString() + " Won!!");
 		treasureAnimator?.SetTrigger("OpenTreasure");
 		UIController.Instance.UpdatePlayerWon(p);
 		Time.timeScale = .1f;
