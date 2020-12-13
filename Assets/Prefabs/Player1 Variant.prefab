@@ -11,10 +11,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 907523112756257477, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 55e7824b329e541c28f9c3bf6cf7a73c, type: 2}
     - target: {fileID: 921499379285846487, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1274062153380101636, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e86a1645e9eb647d1b5313787a124759, type: 2}
     - target: {fileID: 1980020093643969465, guid: 52fb371120c8745bf801f9c36bbae40f, type: 3}
       propertyPath: m_Camera
       value: 
