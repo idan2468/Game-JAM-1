@@ -57,7 +57,7 @@ public class GameManager : Singleton<GameManager>
 	{
 		treasureAnimator?.SetTrigger("OpenTreasure");
 		Time.timeScale = .1f;
-
+		MusicController.Instance.PlaySound(MusicController.SoundEffects.Victory,.5f);
 		winner = p;
 		StartCoroutine(MoveToWinScene());
 		imageComponent = endGameCanvas.transform.GetChild(2).gameObject.GetComponent<Image>();
@@ -69,8 +69,7 @@ public class GameManager : Singleton<GameManager>
 		yield return new WaitForSecondsRealtime(timeUntilWinning);
 		endGameCanvas.SetActive(true);
 		Time.timeScale = 0;
-		
-		
 		imageComponent.sprite = endGameImages[(int)winner];
+		
 	}
 }
