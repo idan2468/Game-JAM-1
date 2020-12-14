@@ -20,6 +20,10 @@ public class MusicController : Singleton<MusicController>
         Ground_3,
         Ground_4,
         Victory,
+        Jump_1,
+        Jump_2,
+        Jump_3,
+        Jump_4,
     }
 
     private Dictionary<SoundEffects, AudioClip> soundsEffects;

@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 
 // [RequireComponent(typeof(CharacterController))]
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         // UIController.Instance.playersSliders[(int) playerIndex] = GetComponentInChildren<Slider>();
         UIController.Instance.playersCooldown[(int) playerIndex] = GetComponentInChildren<Image>();
-        
+
         rocketLauncher = GetComponentInChildren<RocketLauncher>();
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
@@ -68,7 +69,7 @@ public class PlayerController : MonoBehaviour
                 verticalSpeed = jumpForce;
 
                 // Sound Test without position
-                MusicController.Instance.PlaySound(MusicController.SoundEffects.Jump);
+                MusicController.Instance.PlaySound("Jump_" + Random.Range(1, 4));
             }
         }
 
