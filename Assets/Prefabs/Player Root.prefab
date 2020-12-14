@@ -106,7 +106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3556740583051410954
 RectTransform:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 5.11}
+  m_AnchoredPosition: {x: 0, y: 5.96}
   m_SizeDelta: {x: 10.505238, y: 1.3528931}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2674135608668839885
@@ -244,7 +244,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5246496885221220440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3040779696827881448}
@@ -253,8 +253,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 7, y: 7}
+  m_AnchoredPosition: {x: 0, y: -0.07}
+  m_SizeDelta: {x: 4.8857813, y: 4.643263}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2595856651442503206
 CanvasRenderer:
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.7529412}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.70980394}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -573,10 +573,10 @@ MonoBehaviour:
   cam: {fileID: 4401731505160912271, guid: 4a438db6f6b9ac549abe8ff5d7f698ee, type: 3}
   playerIndex: 0
   relativeToCamera: 0
-  jumpForce: 45
+  jumpForce: 32.3
   speed: 10
-  rotationSpeed: 5
-  fireCooldown: 1
+  rotationSpeed: 10
+  fireCooldown: 1.5
   gravity: 60
 --- !u!143 &8598161520014916178
 CharacterController:
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22282a4f8bc4743788ae7384e0d62382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 1
+  mass: 0.2
 --- !u!135 &7067473938837503403
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -646,7 +646,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8622374158921560360}
-  m_LocalRotation: {x: -0.12741075, y: 0, z: 0, w: 0.99185014}
+  m_LocalRotation: {x: -0.16926351, y: 0, z: 0, w: 0.98557085}
   m_LocalPosition: {x: -1.61, y: 0.6600001, z: 2.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -656,7 +656,7 @@ Transform:
   - {fileID: 1204010087666443813}
   m_Father: {fileID: 8598161520014916185}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -14.64, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -19.49, y: 0, z: 0}
 --- !u!114 &921499379285846487
 MonoBehaviour:
   m_ObjectHideFlags: 0
