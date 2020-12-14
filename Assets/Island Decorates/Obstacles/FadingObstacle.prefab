@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 947342028417879869}
+  - component: {fileID: -8449483208316930078}
   - component: {fileID: 4218317159914946712}
   - component: {fileID: 2120788959804699730}
   - component: {fileID: 4689696157840765511}
-  - component: {fileID: -8449483208316930078}
   m_Layer: 0
   m_Name: FadingObstacle
   m_TagString: Untagged
@@ -34,6 +34,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-8449483208316930078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463433304806593927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e261c580d36df04f8bdc6ad987ccc29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 1.5
+  fadedTime: 5
+  unfadedTime: 7
 --- !u!33 &4218317159914946712
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -96,16 +111,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.033012, y: 3.7164407, z: 15.916864}
   m_Center: {x: -0.018410206, y: 2.0184314, z: 0.033965826}
---- !u!114 &-8449483208316930078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463433304806593927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e261c580d36df04f8bdc6ad987ccc29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeTime: 1.5
