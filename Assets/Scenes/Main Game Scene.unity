@@ -571,8 +571,8 @@ Canvas:
   m_GameObject: {fileID: 186965616}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1144370}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -596,7 +596,7 @@ RectTransform:
   m_Children:
   - {fileID: 503666270}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -679,8 +679,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 328248681
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &194913401
 RectTransform:
@@ -1203,7 +1203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3201823660756431984, guid: 8df1610840d8a3048b4eed4b86a3c949, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3201823660756431984, guid: 8df1610840d8a3048b4eed4b86a3c949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2760,7 +2760,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Restart
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3505986069370033259, guid: 7f6cf9793ed4647dd9b5130fdd0399e5, type: 3}
+    - {fileID: 3505986069370033258, guid: 7f6cf9793ed4647dd9b5130fdd0399e5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7f6cf9793ed4647dd9b5130fdd0399e5, type: 3}
 --- !u!1 &1826083305 stripped
 GameObject:
@@ -2798,7 +2800,6 @@ GameObject:
   - component: {fileID: 1872097911}
   - component: {fileID: 1872097913}
   - component: {fileID: 1872097912}
-  - component: {fileID: 1872097914}
   m_Layer: 5
   m_Name: FinalGameImage
   m_TagString: Untagged
@@ -2863,27 +2864,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872097910}
   m_CullTransparentMesh: 0
---- !u!223 &1872097914
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872097910}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 1
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 2
-  m_TargetDisplay: 0
 --- !u!1 &1915056832
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,7 +3144,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Menu
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3505986069370033259, guid: 7f6cf9793ed4647dd9b5130fdd0399e5, type: 3}
+    - {fileID: 3505986069370033258, guid: 7f6cf9793ed4647dd9b5130fdd0399e5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7f6cf9793ed4647dd9b5130fdd0399e5, type: 3}
 --- !u!1 &2008411846
 GameObject:
@@ -3900,7 +3882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3201823660756431984, guid: 8df1610840d8a3048b4eed4b86a3c949, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3201823660756431984, guid: 8df1610840d8a3048b4eed4b86a3c949, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4390,7 +4372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7567932991127197382, guid: 63ebdc2f78321c944b4808d04c6ea71a, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7567932991127197382, guid: 63ebdc2f78321c944b4808d04c6ea71a, type: 3}
       propertyPath: m_LocalPosition.x
