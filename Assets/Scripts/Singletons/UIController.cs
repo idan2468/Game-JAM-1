@@ -23,7 +23,7 @@ public class UIController : Singleton<UIController>
         base.Awake();
     }
 
-    private void OnEnable()
+    public void RefreshUI()
     {
         BGMSlider.value = MusicController.Instance.GetBGMVolume();
         SFXSlider.value = MusicController.Instance.GetSFXVolume();

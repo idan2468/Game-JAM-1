@@ -25,7 +25,9 @@ public class MusicController : Singleton<MusicController>
         Jump_3,
         Jump_4,
     }
-
+    
+    public float BGMSilenceFactor = 2f;
+    
     private Dictionary<SoundEffects, AudioClip> soundsEffects;
     private const string FileExt = "";
     private readonly float backgroundVolume = 0.8f;
@@ -40,9 +42,8 @@ public class MusicController : Singleton<MusicController>
         BGMaudioSource = gameObject.AddComponent<AudioSource>();
         SFXAudioSource = gameObject.AddComponent<AudioSource>();
         
-        BGMaudioSource.name = "Background Music";
         BGMaudioSource.loop = true;
-        BGMaudioSource.volume = backgroundVolume;
+        BGMaudioSource.volume = backgroundVolume / BGMSilenceFactor;
         SFXAudioSource.volume = effectsVolume;
         
         soundsEffects = new Dictionary<SoundEffects, AudioClip>();
@@ -82,9 +83,14 @@ public class MusicController : Singleton<MusicController>
 
     }
 
-    public void ChangeSoundEffectsVolume(Slider slider)
+    public void SetSFXVolume(Slider slider)
     {
         SFXAudioSource.volume = slider.value;
+    }
+
+    public void SetBGMVolume(Slider slider)
+    {
+        BGMaudioSource.volume = slider.value / BGMSilenceFactor;
     }
 
     public void PlayGameBGM()
@@ -110,7 +116,7 @@ public class MusicController : Singleton<MusicController>
 
     public float GetBGMVolume()
     {
-        return BGMaudioSource.volume;
+        return BGMaudioSource.volume * BGMSilenceFactor;
     }
     
 }

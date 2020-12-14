@@ -59,7 +59,7 @@ public class GameManager : Singleton<GameManager>
 		Time.timeScale = .1f;
 		winner = p;
 		StartCoroutine(MoveToWinScene());
-		imageComponent = endGameCanvas.transform.GetChild(2).gameObject.GetComponent<Image>();
+		imageComponent = endGameCanvas.transform.GetChild(0).gameObject.GetComponent<Image>();
 	}
 
 
