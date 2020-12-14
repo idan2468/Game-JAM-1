@@ -17,6 +17,10 @@ public class MusicController : Singleton<MusicController>
         ChestOpen,
         Click, 
         Hover,
+        Ground_1,
+        Ground_2,
+        Ground_3,
+        Ground_4,
     }
 
     private Dictionary<SoundEffects, AudioClip> _soundsEffects;
@@ -51,21 +55,21 @@ public class MusicController : Singleton<MusicController>
         }
     }
     
-    public void PlaySound(SoundEffects soundEffects)
+    public void PlaySound(SoundEffects soundEffects, float volume = 1)
     {
         var soundToPlay = _soundsEffects[soundEffects];
-        _audioSource.PlayOneShot(soundToPlay, _effectsVolume);
+        _audioSource.PlayOneShot(soundToPlay, volume);
     }
 
-    public void PlaySound(string soundName)
+    public void PlaySound(string soundName, float volume = 1)
     {
         if (Enum.TryParse(soundName, true, out SoundEffects sound))
         {
-            PlaySound(sound);
+            PlaySound(sound, volume);
         }
         else
         {
-            Debug.Log("The sound " + soundName + " was not found!");
+            Debug.LogWarning("The sound " + soundName + " was not found!");
         }
 
     }

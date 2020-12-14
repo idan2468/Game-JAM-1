@@ -15,15 +15,15 @@ public enum PlayerIndex
 }
 public class GameManager : Singleton<GameManager>
 {
-	[SerializeField]private GameObject treasure;
-	private Animator treasureAnimator;
-	private ParticleSystem winningEffect;
-	private CinemachineVirtualCamera mainCamera;
-	private Transform endCameraPosition;
-	[SerializeField]private GameObject endGameCanvas;
+	[SerializeField] private GameObject treasure;
+	[SerializeField] private GameObject endGameCanvas;
 	[SerializeField] private float timeUntilWinning = 5;
+	
+	
+	private Animator treasureAnimator;
 	private Sprite[] endGameImages;
 	private PlayerIndex winner;
+	private Image imageComponent;
 
 	private void Awake()
 	{
@@ -61,17 +61,16 @@ public class GameManager : Singleton<GameManager>
 
 		winner = p;
 		StartCoroutine(MoveToWinScene());
+		imageComponent = endGameCanvas.transform.GetChild(2).gameObject.GetComponent<Image>();
 	}
 
 
 	private IEnumerator MoveToWinScene()
 	{
 		yield return new WaitForSecondsRealtime(timeUntilWinning);
-		Debug.Log("Loaded end scene");
 		endGameCanvas.SetActive(true);
 		Time.timeScale = 0;
-		var imageObject = endGameCanvas.transform.GetChild(1).gameObject;
-		var imageComponent = imageObject.GetComponent<Image>();
+		
 		
 		imageComponent.sprite = endGameImages[(int)winner];
 	}
