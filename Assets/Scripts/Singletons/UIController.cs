@@ -9,21 +9,26 @@ public class UIController : Singleton<UIController>
 {
     public Slider[] playersSliders;
     public Image[] playersCooldown;
-    public TMP_Text playerWinMessage;
+
+    public Slider BGMSlider, SFXSlider;
 
     protected override void Awake()
     {
         playersSliders = new Slider[2];
         playersCooldown = new Image[2];
-        playerWinMessage = Resources.Load<GameObject>("Player Won Text").GetComponent<TMP_Text>();
+        
+        BGMSlider.value = MusicController.Instance.GetBGMVolume();
+        SFXSlider.value = MusicController.Instance.GetSFXVolume();
+        
         base.Awake();
     }
 
-    public void UpdatePlayerWon(PlayerIndex p)
+    private void OnEnable()
     {
-        playerWinMessage.SetText(p + " Won!!!");
+        BGMSlider.value = MusicController.Instance.GetBGMVolume();
+        SFXSlider.value = MusicController.Instance.GetSFXVolume();
     }
-    
+
     public void UpdatePlayerCooldownSlider(PlayerIndex p, float val)
     {
         playersSliders[(int) p].value = val;

@@ -41,6 +41,6 @@ public class MenuItem : MonoBehaviour
 
     public void ChangeBGMVolume(Slider slider)
     {
-        MusicController.Instance._audioSource.volume = slider.value;
+        MusicController.Instance.BGMaudioSource.volume = slider.value;
     }
 }

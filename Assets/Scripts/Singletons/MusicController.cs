@@ -4,7 +4,6 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(AudioSource))]
 public class MusicController : Singleton<MusicController>
 {
     public enum SoundEffects
@@ -23,24 +22,29 @@ public class MusicController : Singleton<MusicController>
         Ground_4,
     }
 
-    private Dictionary<SoundEffects, AudioClip> _soundsEffects;
+    private Dictionary<SoundEffects, AudioClip> soundsEffects;
     private const string FileExt = "";
-    private float _backgroundVolume = 0.8f;
-    private float _effectsVolume = .8f;
-    public AudioSource _audioSource;
+    private readonly float backgroundVolume = 0.8f;
+    private float effectsVolume = .8f;
+    public AudioSource BGMaudioSource;
+    private AudioSource SFXAudioSource;
+    
 
     // Start is called before the first frame update
     protected override void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
-        _audioSource.name = "Background Music";
-        _audioSource.loop = true;
-        _audioSource.volume = _backgroundVolume;
+        BGMaudioSource = gameObject.AddComponent<AudioSource>();
+        SFXAudioSource = gameObject.AddComponent<AudioSource>();
         
-        _soundsEffects = new Dictionary<SoundEffects, AudioClip>();
+        BGMaudioSource.name = "Background Music";
+        BGMaudioSource.loop = true;
+        BGMaudioSource.volume = backgroundVolume;
+        SFXAudioSource.volume = effectsVolume;
+        
+        soundsEffects = new Dictionary<SoundEffects, AudioClip>();
         LoadSoundClips();
-        _audioSource.clip = _soundsEffects[SoundEffects.MainMenu_DrunkenSailor];
-        _audioSource.Play();
+        BGMaudioSource.clip = soundsEffects[SoundEffects.MainMenu_DrunkenSailor];
+        BGMaudioSource.Play();
         
         base.Awake();
     }
@@ -51,14 +55,14 @@ public class MusicController : Singleton<MusicController>
         {
             string soundClipName = Enum.GetName(typeof(SoundEffects), sound);
             var audioClip = Resources.Load<AudioClip>(soundClipName + FileExt);
-            _soundsEffects[sound] = audioClip;
+            soundsEffects[sound] = audioClip;
         }
     }
     
     public void PlaySound(SoundEffects soundEffects, float volume = 1)
     {
-        var soundToPlay = _soundsEffects[soundEffects];
-        _audioSource.PlayOneShot(soundToPlay, volume);
+        var soundToPlay = soundsEffects[soundEffects];
+        SFXAudioSource.PlayOneShot(soundToPlay, volume);
     }
 
     public void PlaySound(string soundName, float volume = 1)
@@ -73,32 +77,36 @@ public class MusicController : Singleton<MusicController>
         }
 
     }
-    
-    public void PlaySound(SoundEffects soundEffects, Vector3 position)
-    {
-        var soundToPlay = _soundsEffects[soundEffects];
-        AudioSource.PlayClipAtPoint(soundToPlay, position, _effectsVolume);
-    }
 
     public void ChangeSoundEffectsVolume(Slider slider)
     {
-        _effectsVolume = slider.value;
+        SFXAudioSource.volume = slider.value;
     }
 
     public void PlayGameBGM()
     {
-        var toPlay = _soundsEffects[SoundEffects.BGM];
-        if (_audioSource.clip == toPlay) return;
-        _audioSource.clip = toPlay;
-        _audioSource.Play();
+        var toPlay = soundsEffects[SoundEffects.BGM];
+        if (BGMaudioSource.clip == toPlay) return;
+        BGMaudioSource.clip = toPlay;
+        BGMaudioSource.Play();
     }
 
     public void PlayMenuBGM()
     {
-        var toPlay = _soundsEffects[SoundEffects.MainMenu_DrunkenSailor];
-        if (_audioSource.clip == toPlay) return;
-        _audioSource.clip = toPlay;
-        _audioSource.Play();
+        var toPlay = soundsEffects[SoundEffects.MainMenu_DrunkenSailor];
+        if (BGMaudioSource.clip == toPlay) return;
+        BGMaudioSource.clip = toPlay;
+        BGMaudioSource.Play();
+    }
+
+    public float GetSFXVolume()
+    {
+        return SFXAudioSource.volume;
+    }
+
+    public float GetBGMVolume()
+    {
+        return BGMaudioSource.volume;
     }
     
 }

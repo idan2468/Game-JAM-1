@@ -39,24 +39,23 @@ public class GameManager : Singleton<GameManager>
 
 	}
 
-	#region Menus
-	[UnityEditor.MenuItem("Winning/Win Player1")]
-	public static void Win1()
-	{
-		GameManager.Instance.OnPlayerWin(PlayerIndex.Player1);
-	}
-	[UnityEditor.MenuItem("Winning/Win Player2")]
-	public static void Win2()
-	{
-		GameManager.Instance.OnPlayerWin(PlayerIndex.Player2);
-	}
-	#endregion
+	// #region Menus
+	// [UnityEditor.MenuItem("Winning/Win Player1")]
+	// public static void Win1()
+	// {
+	// 	GameManager.Instance.OnPlayerWin(PlayerIndex.Player1);
+	// }
+	// [UnityEditor.MenuItem("Winning/Win Player2")]
+	// public static void Win2()
+	// {
+	// 	GameManager.Instance.OnPlayerWin(PlayerIndex.Player2);
+	// }
+	// #endregion
 	
 	
 	public void OnPlayerWin(PlayerIndex p)
 	{
 		treasureAnimator?.SetTrigger("OpenTreasure");
-		UIController.Instance.UpdatePlayerWon(p);
 		Time.timeScale = .1f;
 
 		winner = p;
