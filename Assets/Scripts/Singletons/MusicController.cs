@@ -13,7 +13,6 @@ public class MusicController : Singleton<MusicController>
         Hit,
         Fire,
         Jump,
-        ChestOpen,
         Click, 
         Hover,
         Ground_1,

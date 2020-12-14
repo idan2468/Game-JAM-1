@@ -16,7 +16,7 @@ public class TreasureParticle : MonoBehaviour
     public void PlayParticle()
     {
         particle.Play();
-        MusicController.Instance.PlaySound(MusicController.SoundEffects.ChestOpen);
+        MusicController.Instance.PlaySound(MusicController.SoundEffects.Victory);
         isPlaying = true;
     }
 
