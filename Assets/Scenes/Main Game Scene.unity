@@ -397,8 +397,8 @@ Transform:
   - {fileID: 1117317291}
   - {fileID: 1344824310}
   - {fileID: 369781311}
-  - {fileID: 1409864439}
   - {fileID: 1741951442}
+  - {fileID: 1409864439}
   - {fileID: 482334665}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -426,6 +426,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 176523534}
     m_Modifications:
+    - target: {fileID: -8449483208316930078, guid: 849ba0c603c812a4fbdeebe05b50de4f, type: 3}
+      propertyPath: fadeTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 463433304806593927, guid: 849ba0c603c812a4fbdeebe05b50de4f, type: 3}
       propertyPath: m_Name
       value: FadingObstacle (2)
@@ -1386,6 +1390,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 176523534}
     m_Modifications:
+    - target: {fileID: -8449483208316930078, guid: 849ba0c603c812a4fbdeebe05b50de4f, type: 3}
+      propertyPath: fadeTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 463433304806593927, guid: 849ba0c603c812a4fbdeebe05b50de4f, type: 3}
       propertyPath: m_Name
       value: FadingObstacle (1)
