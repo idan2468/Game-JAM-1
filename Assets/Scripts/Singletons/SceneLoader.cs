@@ -31,8 +31,8 @@ public class SceneLoader : Singleton<SceneLoader>
                 break;
         }
 
-        Time.timeScale = 1f;
         SceneManager.LoadScene((int)scene);
+        Time.timeScale = 1f;
     }
     public void moveToScene(string sceneName)
     {
