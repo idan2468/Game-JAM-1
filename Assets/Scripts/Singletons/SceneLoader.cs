@@ -53,6 +53,10 @@ public class SceneLoader : Singleton<SceneLoader>
         SceneManager.LoadScene(sceneName);
     }
 
+    public void ResetTimescale()
+    {
+        Time.timeScale = 1f;
+    }
     public void exitGame()
     {
         Application.Quit();
