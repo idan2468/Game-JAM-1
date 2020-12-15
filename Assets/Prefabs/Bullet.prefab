@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 40
   explosionParticles: {fileID: 4307934400255589649, guid: 8f851955fc8b64f979e25d91fe572c90, type: 3}
-  lifeSpan: 10
+  lifeSpan: 4
   explosionRadius: 3
   explosionPower: 20
   explosionImpactCurve:
