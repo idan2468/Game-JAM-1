@@ -27,6 +27,7 @@ public class GameManager : Singleton<GameManager>
 
 	private void Awake()
 	{
+		Time.timeScale = 1f;
 		if (treasure == null)
 		{
 			Debug.LogWarning("GameManager Warning: No Treasure in Scene!");

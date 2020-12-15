@@ -32,7 +32,7 @@ public class SceneLoader : Singleton<SceneLoader>
         }
 
         SceneManager.LoadScene((int)scene);
-        Time.timeScale = 1f;
+        // Time.timeScale = 1f;
     }
     public void moveToScene(string sceneName)
     {
@@ -48,15 +48,11 @@ public class SceneLoader : Singleton<SceneLoader>
                 MusicController.Instance.PlayGameBGM();
                 break;
         }
-        
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(sceneName);
-    }
 
-    public void ResetTimescale()
-    {
-        Time.timeScale = 1f;
+        SceneManager.LoadScene(sceneName);
+        // Time.timeScale = 1f;
     }
+    
     public void exitGame()
     {
         Application.Quit();
